@@ -28,7 +28,28 @@
                 TAKE A RIDE
             </button>
         </section>
+        <form class="signupform">
+            <h2>Join the club by signing up here!</h2>
+            <hr>
+            <input type="text" placeholder="username@example.com" name="email" required>
 
+            <input type="text" name="username" placeholder="username" required>
+
+            <select name="usertype" required>
+              <option value="driver">Driver</option>
+              <option value="passenger">Passenger</option>
+            </select>
+
+            <input type="password" placeholder="******" name="password" required>
+
+            <input type="password" placeholder="******" name="confirmpassword" required>
+
+            <label>
+              <input type="checkbox" required> I agree to the Terms & Conditions
+            </label>
+
+              <button type="submit" class="signupbutton">Join!</button>
+        </form>
         <footer>Made with love by OJ &copy; 2018</footer>
     </body>
 </html>
