@@ -1,15 +1,15 @@
-html, body{
+html, body {
     height: 100%;
     overflow: auto;
     width: 100%;
 }
 
-body{
+body {
     margin: 0;
     position: relative;
 }
 
-.logo{
+.logo {
     background: cyan;
     border-radius: 50%;
     display: inline-block;
@@ -21,15 +21,15 @@ body{
 
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-header{
+header {
     float: left;
 }
 
-nav{
+nav {
     background-color: grey;
     float: right;
     height: 10%;
@@ -37,7 +37,7 @@ nav{
     width: 50%;
 }
 
-.loginbutton{
+.loginbutton {
     background-color: lightgreen;
     color: blue;
     float: right;
@@ -48,7 +48,7 @@ nav{
     width: 100px;
 }
 
-footer{
+footer {
     align-content: center;
     background-color: grey;
     bottom: 0;
@@ -61,10 +61,11 @@ footer{
     width: 100%;
 }
 
-button, a{
+button, a {
     cursor: pointer;
     opacity: 0.9;
 }
-button:hover,a:hover{
+
+button:hover,a:hover {
     opacity: 1;
 }

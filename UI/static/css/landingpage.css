@@ -1,14 +1,14 @@
-body{
-    background-size: cover;
+body {
     background-image: url(../images/road.jpg);
+    background-size: cover;
 }
 
-.slogan{
+.slogan {
     clear: both;
     text-align: center;
 }
 
-.intro{
+.intro {
     display: inline-block;
     height: auto;
     margin: auto;
@@ -18,18 +18,18 @@ body{
     width: 35%;
 }
 
-.intro>h1{
+.intro>h1 {
     align-content: center;
     font-size: 40px;
     font-weight: 900;
 }
 
-.intro>p{
+.intro>p {
     font-size: 24px;
     text-align: center;
 }
 
-.signupform{
+.signupform {
     align-content: center;
     background-color: cyan;
     display: inline-block;
@@ -39,7 +39,7 @@ body{
     width: 35%;
 }
 
-.call-to-action{
+.call-to-action {
     background-color: magenta;
     border: none;
     height: 50px;
@@ -49,7 +49,7 @@ body{
 
 }
 
-.signupbutton{
+.signupbutton {
     background-color: magenta;
     border: none;
     height: 50px;
@@ -72,6 +72,6 @@ hr {
     margin-bottom: 25px;
 }
 
-h1, h2{
+h1, h2 {
     text-align: center;
 }
