@@ -1,0 +1,71 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+body{
+    position: relative;
+    margin: 0;
+}
+
+.logo{
+    background: cyan;
+    border-radius: 50%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    display: inline-block;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+header{
+    float: left;
+}
+
+nav{
+    height: 10%;
+    width: 50%;
+    background-color: grey;
+    float: right;
+    opacity: 0.85;
+}
+
+.loginbutton{
+    height: 40px;
+    width: 100px;
+    background-color: lightgreen;
+    float: right;
+    margin-right: 3%;
+    text-align: center;
+    color: blue;
+    line-height: 40px;
+
+}
+
+footer{
+    height: 52px;
+    width: 100%;
+    background-color: grey;
+    position: absolute;
+    bottom: 0;
+    align-content: center;
+    vertical-align: middle;
+    line-height: 52px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+button, a{
+    opacity: 0.9;
+    cursor: pointer;
+}
+button:hover,a:hover{
+    opacity: 1;
+}
