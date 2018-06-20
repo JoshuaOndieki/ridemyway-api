@@ -28,6 +28,11 @@ label {
 
 h2 {
     text-align: center;
+    text-decoration: underline;
+}
+
+label {
+    font-weight: 900;
 }
 
 .ridedetails {
