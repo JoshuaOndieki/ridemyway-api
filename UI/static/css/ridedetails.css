@@ -22,6 +22,10 @@
     width: 60%;
 }
 
+label {
+    width: 40%;
+}
+
 h2 {
     text-align: center;
 }
@@ -46,17 +50,6 @@ textarea {
         display: block;
         width: 100%;
         margin: auto;
-    }
-
-    input[type=text] {
-        display: block;
-        margin: 3% auto;
-        width: 90%;
-    }
-
-    input{
-        margin: 3% auto;
-        width: 90%;
     }
 
     textarea {
