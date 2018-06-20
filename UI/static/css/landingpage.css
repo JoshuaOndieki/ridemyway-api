@@ -13,6 +13,8 @@ body {
     height: auto;
     margin: auto;
     margin-left: 5%;
+    margin-right: 20%;
+    min-width: 35%;
     position: relative;
     vertical-align: top;
     width: 35%;
@@ -31,16 +33,31 @@ body {
 
 .signupform {
     align-content: center;
-    background-color: cyan;
+    background-color: #eee2ce;
     display: inline-block;
-    margin-left: 20%;
+    min-width: 35%;
     vertical-align: middle;
-    width: 35%;
+}
+
+
+@media only screen and (max-width: 990px) {
+    .signupform{
+        display: block;
+        margin: 0 auto;
+        width: 95%;
+    }
+
+    .intro{
+        display: block;
+        margin: 0 auto;
+        width: 95%;
+    }
 }
 
 .call-to-action {
-    background-color: magenta;
+    background-color: #6f97c1;
     border: none;
+    display: block;
     height: 50px;
     margin: 0 auto;
     position: relative;
@@ -57,8 +74,9 @@ body {
     width: 120px;
 }
 
-input[type=text], input[type=password], select {
+input[type=text], input[type=password], input[type=email], select {
     background: #f1f1f1;
+    border: none;
     display: block;
     font-size: 21px;
     margin: 3%;
