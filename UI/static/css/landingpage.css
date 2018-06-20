@@ -78,10 +78,12 @@ body {
 input[type=text], input[type=password], input[type=email], select {
     background: #f1f1f1;
     border: none;
+    border-radius: 10px;
     display: block;
     font-size: 21px;
-    margin: 3%;
-    width: 70%;
+    margin: 3% auto 3% auto;
+    text-align: center;
+    width: 80%;
 
 }
 
