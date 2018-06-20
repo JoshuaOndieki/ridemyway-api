@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ride My Way</title>
+        <link rel="stylesheet" href="static/css/landingpage.css">
+        <link rel="stylesheet" href="static/css/main.css">
+    </head>
+    <body>
+        <header>
+            <a href="landingpage.html" class="logo">
+                RideMyWay
+            </a>
+        </header>
+        <a href="login.html" class="loginbutton">
+            LOGIN
+        </a>
+        <h2 class="slogan">Join the best car pooling club!</h2>
+        <section class="intro">
+            <h1>RIDE MY WAY</h1>
+            <p>
+                Ride-my App is a carpooling application that provides
+                drivers with the ability to create ride offers
+                and passengers to join available ride offers.
+            </p>
+            <button class="call-to-action" type="button" name="call-to-action">
+                TAKE A RIDE
+            </button>
+        </section>
+        <form class="signupform">
+            <h2>Join the club by signing up here!</h2>
+            <hr>
+            <input type="text" placeholder="username@example.com" name="email" required>
+
+            <input type="text" name="username" placeholder="username" required>
+
+            <select name="usertype" required>
+              <option value="driver">Driver</option>
+              <option value="passenger">Passenger</option>
+            </select>
+
+            <input type="password" placeholder="password" name="password" required>
+
+            <input type="password" placeholder="confirm password" name="confirmpassword" required>
+
+            <label>
+              <input type="checkbox" required> I agree to the Terms & Conditions
+            </label>
+
+              <button type="submit" class="signupbutton">Join!</button>
+        </form>
+        <footer>Made with love by OJ &copy; 2018</footer>
+    </body>
+</html>

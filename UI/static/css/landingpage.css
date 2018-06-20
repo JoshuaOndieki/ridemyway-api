@@ -1,0 +1,77 @@
+body {
+    background-image: url(../images/road.jpg);
+    background-size: cover;
+}
+
+.slogan {
+    clear: both;
+    text-align: center;
+}
+
+.intro {
+    display: inline-block;
+    height: auto;
+    margin: auto;
+    margin-left: 5%;
+    position: relative;
+    vertical-align: top;
+    width: 35%;
+}
+
+.intro>h1 {
+    align-content: center;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.intro>p {
+    font-size: 24px;
+    text-align: center;
+}
+
+.signupform {
+    align-content: center;
+    background-color: cyan;
+    display: inline-block;
+    height: 60%;
+    margin-left: 20%;
+    vertical-align: middle;
+    width: 35%;
+}
+
+.call-to-action {
+    background-color: magenta;
+    border: none;
+    height: 50px;
+    margin: 0 auto;
+    position: relative;
+    width: 200px;
+
+}
+
+.signupbutton {
+    background-color: magenta;
+    border: none;
+    height: 50px;
+    left: 40%;
+    margin: 5%;
+    width: 120px;
+}
+
+input[type=text], input[type=password], select {
+    background: #f1f1f1;
+    display: block;
+    font-size: 21px;
+    margin: 3%;
+    width: 70%;
+
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+h1, h2 {
+    text-align: center;
+}
