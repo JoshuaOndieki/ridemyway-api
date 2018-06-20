@@ -57,7 +57,7 @@ td a {
     width: 100%;
 }
 
-tr:hover{
+tr:hover {
     background: #13c3c3;
 }
 
@@ -76,4 +76,15 @@ tr:nth-child(even):hover {
 .info {
     text-align: center;
 
+}
+
+.profilebutton {
+    background-color: #6f97c1;
+    color: blue;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    margin: 2%;
+    text-align: center;
+    width: 100px;
 }
