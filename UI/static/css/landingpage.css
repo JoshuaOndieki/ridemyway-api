@@ -9,6 +9,7 @@ body {
 }
 
 .intro {
+    background-color: #eee2cec9;
     display: inline-block;
     height: auto;
     margin: auto;
