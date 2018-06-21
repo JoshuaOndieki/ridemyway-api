@@ -1,0 +1,87 @@
+body {
+    background: #0000002e;
+}
+
+.delete {
+    background-color: magenta;
+    border: none;
+    display: block;
+    height: 40px;
+    left: 40%;
+    line-height: 40px;
+    margin: auto;
+    margin-top: 2%;
+    text-align: center;
+    width: 100px;
+}
+
+.detailscontainer {
+    display: inline-block;
+    margin-left: 3%;
+    width: 50%;
+}
+
+.requestscontainer {
+    align-content: center;
+    background-color: #eee2ce;
+    display: inline-block;
+    padding: 5px;
+    position: relative;
+    vertical-align: middle;
+    width: 30%;
+}
+
+label {
+    font-weight: 900;
+    width: 40%;
+}
+
+h2 {
+    clear: both;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.ridedetails {
+    margin: 2%;
+    width: 70%;
+}
+
+textarea {
+    margin: 3% auto;
+    width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+    .detailscontainer {
+        width: 95%;
+    }
+
+    .ridedetails {
+        display: block;
+        width: 100%;
+        margin: auto;
+    }
+
+    textarea {
+        display: block;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 990px) and (min-width: 600px) {
+    .detailscontainer{
+        width: 60%;
+    }
+}
+
+.profilebutton {
+    background-color: #6f97c1;
+    color: blue;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    margin: 2%;
+    text-align: center;
+    width: 100px;
+}
