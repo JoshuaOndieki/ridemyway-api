@@ -27,10 +27,6 @@ input[type=text] {
     width: 60%;
 }
 
-h2 {
-    text-align: center;
-}
-
 .fieldset {
     display: inline-block;
     width: 70%;
