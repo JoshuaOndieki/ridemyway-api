@@ -41,17 +41,6 @@ br {
     }
 }
 
-.profilebutton {
-    background-color: #6f97c1;
-    color: blue;
-    float: right;
-    height: 40px;
-    line-height: 40px;
-    margin: 2%;
-    text-align: center;
-    width: 100px;
-}
-
 .rideshistory {
     background: #eee2ce;
     border: 3px solid grey;

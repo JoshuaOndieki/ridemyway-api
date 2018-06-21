@@ -70,3 +70,14 @@ button, a {
 button:hover,a:hover {
     opacity: 1;
 }
+
+.profilebutton {
+    background-color: #6f97c1;
+    color: blue;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    margin: 2%;
+    text-align: center;
+    width: 100px;
+}
