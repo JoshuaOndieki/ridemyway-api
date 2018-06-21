@@ -1,0 +1,137 @@
+body {
+    background: #0000002e;
+}
+
+.accept {
+    background-color: #6f97c1;
+    border: none;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    width: 100px;
+}
+
+.reject {
+    background-color: magenta;
+    border: none;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    width: 100px;
+}
+
+.delete {
+    background-color: magenta;
+    border: none;
+    display: block;
+    height: 40px;
+    left: 40%;
+    line-height: 40px;
+    margin: auto;
+    margin-top: 2%;
+    text-align: center;
+    width: 100px;
+}
+
+.passengername {
+    display: inline-block;
+    margin-left: 3%;
+    width: 50%;
+}
+
+.pendingrequest {
+    margin: auto;
+}
+
+.detailscontainer {
+    display: inline-block;
+    margin-left: 3%;
+    width: 50%;
+}
+
+.requestscontainer {
+    align-content: center;
+    background-color: #eee2ce;
+    display: inline-block;
+    height: 80%;
+    padding: 5px;
+    vertical-align: top;
+    width: 40%;
+}
+
+label {
+    font-weight: 900;
+    width: 40%;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+br {
+    clear: both;
+}
+
+.ridedetails {
+    margin: 2%;
+    width: 70%;
+}
+
+textarea {
+    margin: 3% auto;
+    width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+    .detailscontainer {
+        display: block;
+        width: 95%;
+    }
+
+    .requestscontainer {
+        display: block;
+        margin: 3% auto;
+        width: 95%;
+    }
+
+    .ridedetails {
+        display: block;
+        width: 100%;
+        margin: auto;
+    }
+
+    textarea {
+        display: block;
+        width: 80%;
+    }
+
+    .accept, .reject {
+        font-size: 10px;
+        width: 70px;
+    }
+}
+
+@media only screen and (max-width: 990px) and (min-width: 600px) {
+    .requestscontainer {
+        width: 60%;
+    }
+}
+
+.profilebutton {
+    background-color: #6f97c1;
+    color: blue;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    margin: 2%;
+    text-align: center;
+    width: 100px;
+}
+
+.pendingrequest {
+    background: #ff9f002e;
+    width: 90%;
+}
