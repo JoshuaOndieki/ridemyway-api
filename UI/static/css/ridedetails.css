@@ -2,19 +2,6 @@ body {
     background: #0000002e;
 }
 
-.add {
-    background-color: magenta;
-    border: none;
-    display: block;
-    height: 40px;
-    left: 40%;
-    line-height: 40px;
-    margin: auto;
-    margin-top: 2%;
-    text-align: center;
-    width: 100px;
-}
-
 .offerform {
     align-content: center;
     background-color: #eee2ce;
