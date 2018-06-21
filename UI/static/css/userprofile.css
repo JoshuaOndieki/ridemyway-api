@@ -1,0 +1,95 @@
+body {
+    background: #0000002e;
+}
+
+
+.userdetails {
+    align-content: center;
+    margin: 3% auto;
+    width: 30%;
+}
+
+.userdetails div {
+    margin: auto;
+    width: 90%;
+}
+label {
+    font-weight: 900;
+    margin-left: 3%;
+    width: 40%;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+br {
+    clear: both;
+}
+
+@media only screen and (max-width: 600px) {
+    .userdetails {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 990px) and (min-width: 600px) {
+    .userdetails {
+        width: 60%;
+    }
+}
+
+.profilebutton {
+    background-color: #6f97c1;
+    color: blue;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    margin: 2%;
+    text-align: center;
+    width: 100px;
+}
+
+.rideshistory {
+    background: #eee2ce;
+    border: 3px solid grey;
+    margin: 0 auto;
+    overflow: auto;
+    width: 80%;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 95%;
+}
+
+th {
+    background: #a52a2a7a;
+}
+
+td, th {
+    border-right: 1px solid grey;
+    padding: 8px;
+    text-align: left;
+}
+
+td a {
+    color: red;
+    display: block;
+    width: 100%;
+}
+
+tr:hover {
+    background: #13c3c3;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(even):hover {
+    background: #13c3c3;
+}
