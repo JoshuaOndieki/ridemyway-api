@@ -106,3 +106,7 @@ tr:nth-child(even):hover {
     text-align: center;
     width: 100px;
 }
+
+label {
+    font-weight: 900;
+}

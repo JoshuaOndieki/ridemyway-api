@@ -22,10 +22,6 @@ h2 {
     text-decoration: underline;
 }
 
-label {
-    font-weight: 900;
-}
-
 .ridedetails {
     display: inline-block;
     width: 70%;
