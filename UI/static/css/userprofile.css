@@ -51,3 +51,45 @@ br {
     text-align: center;
     width: 100px;
 }
+
+.rideshistory {
+    background: #eee2ce;
+    border: 3px solid grey;
+    margin: 0 auto;
+    overflow: auto;
+    width: 80%;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 95%;
+}
+
+th {
+    background: #a52a2a7a;
+}
+
+td, th {
+    border-right: 1px solid grey;
+    padding: 8px;
+    text-align: left;
+}
+
+td a {
+    color: red;
+    display: block;
+    width: 100%;
+}
+
+tr:hover {
+    background: #13c3c3;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(even):hover {
+    background: #13c3c3;
+}
