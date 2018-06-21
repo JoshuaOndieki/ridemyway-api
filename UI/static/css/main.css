@@ -81,3 +81,15 @@ button:hover,a:hover {
     text-align: center;
     width: 100px;
 }
+
+tr:hover {
+    background: #13c3c3;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(even):hover {
+    background: #13c3c3;
+}

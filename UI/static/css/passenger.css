@@ -56,19 +56,6 @@ td a {
     cursor: pointer;
 }
 
-tr:hover {
-    background: #13c3c3;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-tr:nth-child(even):hover {
-    background: #13c3c3;
-}
-
-
 .info {
     text-align: center;
 
