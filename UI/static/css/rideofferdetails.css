@@ -62,13 +62,7 @@ body {
 }
 
 label {
-    font-weight: 900;
     width: 40%;
-}
-
-h2 {
-    text-align: center;
-    text-decoration: underline;
 }
 
 br {
@@ -118,17 +112,6 @@ textarea {
     .requestscontainer {
         width: 60%;
     }
-}
-
-.profilebutton {
-    background-color: #6f97c1;
-    color: blue;
-    float: right;
-    height: 40px;
-    line-height: 40px;
-    margin: 2%;
-    text-align: center;
-    width: 100px;
 }
 
 .pendingrequest {

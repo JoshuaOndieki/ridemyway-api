@@ -64,7 +64,3 @@ input[type=text], input[type=password], input[type=email], select {
         width: 60%;
     }
 }
-
-h2{
-    text-align: center;
-}

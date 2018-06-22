@@ -56,33 +56,9 @@ td a {
     cursor: pointer;
 }
 
-tr:hover {
-    background: #13c3c3;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-tr:nth-child(even):hover {
-    background: #13c3c3;
-}
-
-
 .info {
     text-align: center;
 
-}
-
-.profilebutton {
-    background-color: #6f97c1;
-    color: blue;
-    float: right;
-    height: 40px;
-    line-height: 40px;
-    margin: 2%;
-    text-align: center;
-    width: 100px;
 }
 
 .searchfield {

@@ -14,14 +14,8 @@ body {
     width: 90%;
 }
 label {
-    font-weight: 900;
     margin-left: 3%;
     width: 40%;
-}
-
-h2 {
-    text-align: center;
-    text-decoration: underline;
 }
 
 br {
@@ -39,17 +33,6 @@ br {
     .userdetails {
         width: 60%;
     }
-}
-
-.profilebutton {
-    background-color: #6f97c1;
-    color: blue;
-    float: right;
-    height: 40px;
-    line-height: 40px;
-    margin: 2%;
-    text-align: center;
-    width: 100px;
 }
 
 .rideshistory {
@@ -80,16 +63,4 @@ td a {
     color: red;
     display: block;
     width: 100%;
-}
-
-tr:hover {
-    background: #13c3c3;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-tr:nth-child(even):hover {
-    background: #13c3c3;
 }

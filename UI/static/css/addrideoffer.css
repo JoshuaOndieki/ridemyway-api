@@ -16,19 +16,6 @@ input[type=text] {
     width: 45%;
 }
 
-.add {
-    background-color: magenta;
-    border: none;
-    display: block;
-    height: 40px;
-    left: 40%;
-    line-height: 40px;
-    margin: auto;
-    margin-top: 2%;
-    text-align: center;
-    width: 100px;
-}
-
 .offerform {
     align-content: center;
     background-color: #eee2ce;
@@ -38,10 +25,6 @@ input[type=text] {
     position: relative;
     vertical-align: middle;
     width: 60%;
-}
-
-h2 {
-    text-align: center;
 }
 
 .fieldset {

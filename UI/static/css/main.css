@@ -70,3 +70,53 @@ button, a {
 button:hover,a:hover {
     opacity: 1;
 }
+
+.profilebutton {
+    background-color: #6f97c1;
+    color: blue;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    margin: 2%;
+    text-align: center;
+    width: 100px;
+}
+
+tr:hover {
+    background: #13c3c3;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(even):hover {
+    background: #13c3c3;
+}
+
+.add {
+    background-color: magenta;
+    border: none;
+    display: block;
+    height: 40px;
+    left: 40%;
+    line-height: 40px;
+    margin: auto;
+    margin-top: 2%;
+    text-align: center;
+    width: 100px;
+}
+
+label {
+    font-weight: 900;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+h1, h2 {
+    text-align: center;
+    text-decoration: underline;
+}

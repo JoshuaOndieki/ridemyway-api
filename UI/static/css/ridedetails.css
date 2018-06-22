@@ -2,19 +2,6 @@ body {
     background: #0000002e;
 }
 
-.add {
-    background-color: magenta;
-    border: none;
-    display: block;
-    height: 40px;
-    left: 40%;
-    line-height: 40px;
-    margin: auto;
-    margin-top: 2%;
-    text-align: center;
-    width: 100px;
-}
-
 .offerform {
     align-content: center;
     background-color: #eee2ce;
@@ -28,15 +15,6 @@ body {
 
 label {
     width: 40%;
-}
-
-h2 {
-    text-align: center;
-    text-decoration: underline;
-}
-
-label {
-    font-weight: 900;
 }
 
 .ridedetails {
@@ -71,15 +49,4 @@ textarea {
     .offerform{
         width: 60%;
     }
-}
-
-.profilebutton {
-    background-color: #6f97c1;
-    color: blue;
-    float: right;
-    height: 40px;
-    line-height: 40px;
-    margin: 2%;
-    text-align: center;
-    width: 100px;
 }
