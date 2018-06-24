@@ -11,13 +11,15 @@ database = {"Users": {}, "Rides": {}, "Requests": {}}
     {
         Users:
             {
-                username: [name, gender, age, usertype, date_joined, contacts, email, password]
+                username: [name, gender, age, usertype, date_joined, contacts,
+                email, password]
                             ...
             }
 
         Rides:
             {
-                rideID: [dateoffered, departure, driver, contribution, vehicle_number_plate, capacity, availability]
+                rideID: [dateoffered, departure, driver, contribution,
+                vehicle_number_plate, capacity, availability]
                             ...
             }
 
