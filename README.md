@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/JoshuaOndieki/ride-my-way.svg?branch=master)](https://travis-ci.org/JoshuaOndieki/ride-my-way) [![Coverage Status](https://coveralls.io/repos/github/JoshuaOndieki/ride-my-way/badge.svg?branch=master)](https://coveralls.io/github/JoshuaOndieki/ride-my-way?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/2c1deb66dc12dbd54068/maintainability)](https://codeclimate.com/github/JoshuaOndieki/ride-my-way/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9baccc745e904bf8bca4f42b4dfbe939)](https://www.codacy.com/app/JoshuaOndieki/ride-my-way?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JoshuaOndieki/ride-my-way&amp;utm_campaign=Badge_Grade)
 
 # Ride My Way
 Ride-my App is a carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.
@@ -13,24 +12,44 @@ A few requirements to install, run and test this project.
 
 
 **Git** : Use git to git clone this project locally. [git](https://git-scm.com/)
+**Python3.6.5**
 
 
 ### Installing
-Type `git clone https://github.com/JoshuaOndieki/ride-my-way.git` in your terminal.
+Type `git clone https://github.com/JoshuaOndieki/ridemyway-api.git` in your terminal.
+1. Install Python 3.6.5
+3. cd to the root dir of this repo `cd ridemyway-api`.
+4. Create a virtual env and `pip install -r requirements.txt`
+5. Run the app with `python run.py` or `python3 run.py`
+6. Checkout the endpoints and test them with a tool like [POSTMAN](https://www.getpostman.com)
+
+#### Heroku
+This Flask API has been hosted to heroku at [RideMyWay](https://ridemyway-app.herokuapp.com)
+
+## API ENDPOINTS
+
+
+EndPoint | Functionality
+-- | --
+
+
+
+A Pivotal tracker board was used in planning and managing this project. The board is publicly available [here](https://www.pivotaltracker.com/n/projects/2179581)
 
 ## Testing
-Manually open the index.html file in your preferred browser.
-Navigate through the pages with the links provided.
+
+Run `nosetests` to see the tests pass.
+Manually test the endpoints with a tool like [POSTMAN](https://www.getpostman.com)
 
 ## Built With
 
-- HTML
-- CSS
+- Python-3.6.5
+- Flask
 
 ## Versioning
 
 This project uses tags for release and versioning.
-For the versions available, see the [tags on this repository](https://github.com/JoshuaOndieki/ride-my-way/tags).
+For the versions available, see the [tags on this repository](https://github.com/JoshuaOndieki/ridemyway-api/tags).
 
 ## Authors
 
@@ -45,4 +64,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Andela for this wonderful learning opportunity
 * Inspiration
-* Andela21 Teammates, bootcampers and facilitators for their support.
+* Andela21 Teammates and facilitators for their support.
