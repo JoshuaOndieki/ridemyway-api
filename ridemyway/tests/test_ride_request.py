@@ -45,6 +45,12 @@ class TestCreateRideRequestAPIEndpoint(unittest.TestCase):
         self.assertEqual(result['message'], 'Ride request created successfully')
         self.assertEqual(self.response.status_code, 201)
 
+    def test_does_not_create_a_request_to_nonexistent_ride(self):
+        self.response = self.client().get('/api/v1/rides/6454')
+        result = json.loads(self.response.data.decode())
+        self.assertEqual(result['status'], 'failed')
+        self.assertEqual(self.response.status_code, 404)
+
 
 # Just incase a testing library is not used!
 if __name__ is "__main__":
