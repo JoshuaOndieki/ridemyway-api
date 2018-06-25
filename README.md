@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/JoshuaOndieki/ridemyway-api.svg?branch=master)](https://travis-ci.org/JoshuaOndieki/ridemyway-api) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ae62c8dfec124626a765d1d11d0047db)](https://www.codacy.com/app/JoshuaOndieki/ridemyway-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JoshuaOndieki/ridemyway-api&amp;utm_campaign=Badge_Grade) [![Coverage Status](https://coveralls.io/repos/github/JoshuaOndieki/ridemyway-api/badge.svg?branch=master)](https://coveralls.io/github/JoshuaOndieki/ridemyway-api?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/94e6632401a89578389d/maintainability)](https://codeclimate.com/github/JoshuaOndieki/ridemyway-api/maintainability)
+
 
 # Ride My Way
 Ride-my App is a carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.
