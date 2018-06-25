@@ -43,25 +43,32 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
     def test_fetches_rides_successfully(self):
         self.response = self.client().get('/api/v1/rides')
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['message'], 'Rides retrieved successfully')
+        self.assertEqual(result['message'],
+                         'Rides retrieved successfully',
+                         msg='Should fetch rides successfully!')
         self.assertEqual(self.response.status_code, 200)
 
     def test_fetches_a_single_ride_with_valid_id(self):
         self.response = self.client().get('/api/v1/rides/1')
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['message'], 'Ride retrieved successfully')
+        self.assertEqual(result['message'],
+                         'Ride retrieved successfully',
+                         msg='Should fetch single ride given a valid ride id!')
         self.assertEqual(self.response.status_code, 200)
 
     def test_does_not_fetch_ride_that_does_not_exist(self):
         self.response = self.client().get('/api/v1/rides/6454')
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['status'], 'failed')
+        self.assertEqual(result['status'], 'failed',
+                         msg='Should only fetch existing rides!')
         self.assertEqual(self.response.status_code, 404)
 
     def test_does_not_fetch_wrong_ride(self):
         self.response = self.client().get('/api/v1/rides/1')
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['data']['rideId'], 1)
+        self.assertEqual(result['data']['rideId'], 1,
+                         msg='Should be able to fetch the correct ride\
+                          with the id given in the url!')
 
 
 # Just incase a testing library is not used!
