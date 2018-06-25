@@ -44,7 +44,7 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['message'], "Invalid data given")
+        self.assertEqual(result['errors']['date'], "Invalid date given")
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_cost(self):
@@ -58,7 +58,7 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['message'], "Invalid data given")
+        self.assertEqual(result['errors']['cost'], "Invalid cost given")
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_capacity(self):
@@ -72,7 +72,7 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['message'], "Invalid data given")
+        self.assertEqual(result['errors']['capacity'], "Invalid capacity given")
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_vehicle_number_plate(self):
@@ -86,7 +86,7 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['message'], "Invalid data given")
+        self.assertEqual(result['errors']['vehicleNumberPlate'], "Invalid vehicle number plate given")
         self.assertEqual(self.response.status_code, 400)
 
 
