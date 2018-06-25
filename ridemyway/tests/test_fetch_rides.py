@@ -46,6 +46,12 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(result['message'], 'Rides retrieved successfully')
         self.assertEqual(self.response.status_code, 200)
 
+    def test_fetches_a_single_ride_with_valid_id(self):
+        self.response = self.client().post('/api/v1/rides/1')
+        result = json.loads(self.response.data.decode())
+        self.assertEqual(result['message'], 'Ride retrieved successfully')
+        self.assertEqual(self.response.status_code, 200)
+
 
 # Just incase a testing library is not used!
 if __name__ is "__main__":
