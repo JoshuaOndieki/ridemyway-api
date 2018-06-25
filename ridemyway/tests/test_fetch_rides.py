@@ -47,13 +47,13 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 200)
 
     def test_fetches_a_single_ride_with_valid_id(self):
-        self.response = self.client().post('/api/v1/rides/1')
+        self.response = self.client().get('/api/v1/rides/1')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['message'], 'Ride retrieved successfully')
         self.assertEqual(self.response.status_code, 200)
 
-    def test_does_not_retrieve_single_ride_that_does_not_exist(self):
-        self.response = self.client().post('/api/v1/rides/6454')
+    def test_does_not_fetch_single_ride_that_does_not_exist(self):
+        self.response = self.client().get('/api/v1/rides/6454')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['status'], 'failed')
         self.assertEqual(self.response.status_code, 404)
