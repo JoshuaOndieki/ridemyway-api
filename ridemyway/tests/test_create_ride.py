@@ -52,6 +52,22 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
                          msg='Should only accept correctly formatted dates!')
         self.assertEqual(self.response.status_code, 400)
 
+    def test_cannot_create_ride_with_passed_date(self):
+        data = {
+            'data':
+                [{'departure': 'Jun 25 1901  1:30PM',
+                  'origin': 'Nairobi',
+                  'destination': 'Garissa',
+                  'cost': 350, 'vehicle_number_plate':
+                  'KBC-A21', 'capacity': 3}]}
+
+        self.response = self.client().post('/api/v1/rides', data=data)
+        result = json.loads(self.response.data.decode())
+        self.assertEqual(result['errors']['date'],
+                         'Invalid date given',
+                         msg='Should only accept future dates!')
+        self.assertEqual(self.response.status_code, 400)
+
     def test_does_not_create_ride_with_invalid_cost(self):
         data = {
             'data':
