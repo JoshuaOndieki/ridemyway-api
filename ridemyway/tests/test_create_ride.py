@@ -3,7 +3,7 @@ import json
 from ridemyway import create_app
 
 
-class TestCreateRideAPIEndpoints(unittest.TestCase):
+class TestCreateRideAPIEndpoint(unittest.TestCase):
     """
         Tests Create Ride API endpoint
         - Ride:     '/api/v1/rides'         # POST
