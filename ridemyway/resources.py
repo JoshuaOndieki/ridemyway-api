@@ -56,7 +56,6 @@ class Ride(Resource):
         return rides.fetch_one(rideId)
 
 
-
 class All(Resource):
 
     def __init__(self):
