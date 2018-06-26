@@ -1,6 +1,7 @@
 from ridemyway.models.ride import Ride
 from datetime import datetime
 from flask import current_app as app
+from ridemyway.utils.validators import date_has_passed
 
 
 class RideController():
@@ -63,3 +64,29 @@ class RideController():
                     ]
                 }
             return(status)
+
+    def fetch_all(self):
+        rides_count = 0
+        fetched_rides = {
+            'status': 'success',
+            'message': 'Rides fetched successfully',
+            'meta': {
+                'rides': 0
+                },
+            'data': {}
+            }
+        for key, value in app.database['Rides'].items():
+            if date_has_passed(value['departure']):
+                continue
+            rides_count += 1
+            fetched_rides['data'][key] = {
+                'departure': value['departure'],
+                'origin': value['origin'],
+                'destination': value['destination'],
+                'cost': value['cost'],
+                'vehicle_number_plate': value['vehicle_number_plate'],
+                'capacity': value['capacity'],
+                'dateoffered': value['date_offered']
+                }
+        fetched_rides['meta']['rides'] = rides_count
+        return fetched_rides
