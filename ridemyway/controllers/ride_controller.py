@@ -41,9 +41,9 @@ class RideController():
                   'message': 'Ride created successfully',
                   'attributes': {
                       'location':
-                      '/api/v1/rides/' + ride['ride_id'],
+                      '/api/v1/rides/' + str(ride['ride_id']),
                       'repr':
-                      ride['ride_id'] + ' - from ' +
+                      str(ride['ride_id']) + ' - from ' +
                       ride['origin'] + ' to ' +
                       ride['destination']
                       }

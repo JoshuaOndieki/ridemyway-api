@@ -32,5 +32,5 @@ class Ride():
         self.availability = kwargs['availability']
 
     def __repr__(self):
-        return(self.ride_id + ' - from ' +
+        return(str(self.ride_id) + ' - from ' +
                self.origin + ' to ' + self.destination)
