@@ -1,6 +1,7 @@
 from ridemyway.models.ride import Ride
 from datetime import datetime
 from flask import current_app as app
+import re
 
 
 class RideController():
@@ -83,6 +84,10 @@ class RideController():
                 }
             return fetched_ride, 200
         except KeyError:
+            error_message_404 = 'Chapter 404: The Lost Resource. \
+            A careful and diligent search \
+            has been made for the desired resource, \
+            but it just cannot be found.'
             status = {
                 'status': 'failed',
                 'message': 'NOT FOUND',
@@ -91,10 +96,7 @@ class RideController():
                     },
                 'errors': [
                     {
-                        404: 'Chapter 404: The Lost Resource. \
-                        A careful and diligent search \
-                        has been made for the desired resource, \
-                        but it just cannot be found.'
+                        404: re.sub(' +', ' ', error_message_404)
                         }
                     ]
                 }
