@@ -25,7 +25,7 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
             'cost': 350,
             'vehicle_number_plate': 'KBC-A21',
             'capacity': 3
-            }
+             }
         data_1 = {
             'departure': 'Jun 28 2018  7:00AM',
             'origin': 'Garissa',

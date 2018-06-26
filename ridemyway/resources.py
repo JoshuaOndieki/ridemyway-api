@@ -54,6 +54,15 @@ class Rides(Resource):
         return(fetched_rides), 200
 
 
+class Ride(Resource):
+
+    def __init__(self):
+        pass
+
+    def get(self, rideId):
+        return rides.fetch_one(rideId)
+
+
 class All(Resource):
 
     def __init__(self):

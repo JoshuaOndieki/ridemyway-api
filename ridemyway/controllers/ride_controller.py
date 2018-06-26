@@ -1,6 +1,7 @@
 from ridemyway.models.ride import Ride
 from datetime import datetime
 from flask import current_app as app
+import re
 from ridemyway.utils.validators import date_has_passed
 
 
@@ -64,6 +65,43 @@ class RideController():
                     ]
                 }
             return(status)
+
+    def fetch_one(self, ride_id):
+        try:
+            one_ride = app.database['Rides'][ride_id]
+            fetched_ride = {
+                'status': 'success',
+                'message': 'Ride fetched successfully',
+                'data': {
+                    'rideId': one_ride['ride_id'],
+                    'departure': one_ride['departure'],
+                    'origin': one_ride['origin'],
+                    'destination': one_ride['destination'],
+                    'cost': one_ride['cost'],
+                    'vehicleNumberPlate': one_ride['vehicle_number_plate'],
+                    'capacity': one_ride['capacity'],
+                    'dateoffered': one_ride['date_offered']
+                    }
+                }
+            return fetched_ride, 200
+        except KeyError:
+            error_message_404 = 'Chapter 404: The Lost Resource. \
+            A careful and diligent search \
+            has been made for the desired resource, \
+            but it just cannot be found.'
+            status = {
+                'status': 'failed',
+                'message': 'NOT FOUND',
+                'meta': {
+                    'errors': 1
+                    },
+                'errors': [
+                    {
+                        404: re.sub(' +', ' ', error_message_404)
+                        }
+                    ]
+                }
+            return status, 404
 
     def fetch_all(self):
         rides_count = 0
