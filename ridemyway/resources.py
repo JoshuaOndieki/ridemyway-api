@@ -3,8 +3,10 @@ from flask_jwt_extended import (create_access_token,
                                 create_refresh_token, jwt_required,
                                 get_jwt_identity, get_raw_jwt)
 from flask import current_app as app
-
+import json
 from ridemyway.controllers.ride_controller import RideController
+
+from .utils import errors
 
 
 rides = RideController()
@@ -38,6 +40,9 @@ class Rides(Resource):
             Creates a ride
         """
         data = self.parser.parse_args()
+        create_ride_errors = errors.create_ride(**data)
+        if create_ride_errors:
+            return json.loads(json.dumps(create_ride_errors)), 400
         self.response = rides.create_ride(**data)
         return self.response, 201
 
