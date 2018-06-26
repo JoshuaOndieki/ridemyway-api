@@ -4,6 +4,43 @@ from flask_jwt_extended import (create_access_token,
                                 get_jwt_identity, get_raw_jwt)
 from flask import current_app as app
 
+from ridemyway.controllers.ride_controller import RideController
+
+
+rides = RideController()
+
+
+class Rides(Resource):
+
+    def __init__(self):
+        self.parser = reqparse.RequestParser()
+        self.parser.add_argument('departure',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('origin',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('destination',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('cost',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('vehicle_number_plate',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('capacity',
+                                 help='This field cannot be blank',
+                                 required=True)
+
+    def get(self):
+        """
+            Gets all available rides and responds with a json formatted data
+        """
+        data = self.parser.parse_args()
+        self.response = rides.create_ride(**data)
+        return self.response, 201
+
 
 class All(Resource):
 
