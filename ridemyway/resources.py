@@ -46,6 +46,13 @@ class Rides(Resource):
         self.response = rides.create_ride(**data)
         return self.response, 201
 
+    def get(self):
+        """
+            Fetches all rides
+        """
+        fetched_rides = rides.fetch_all()
+        return(fetched_rides), 200
+
 
 class Ride(Resource):
 
