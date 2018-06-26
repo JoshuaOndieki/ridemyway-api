@@ -33,9 +33,9 @@ class Rides(Resource):
                                  help='This field cannot be blank',
                                  required=True)
 
-    def get(self):
+    def post(self):
         """
-            Gets all available rides and responds with a json formatted data
+            Creates a ride
         """
         data = self.parser.parse_args()
         self.response = rides.create_ride(**data)
