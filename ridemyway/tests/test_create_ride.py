@@ -47,6 +47,7 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
+        print(result)
         self.assertEqual(result['errors']['date'],
                          'Invalid date given',
                          msg='Should only accept correctly formatted dates!')
