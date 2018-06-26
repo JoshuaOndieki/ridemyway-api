@@ -71,7 +71,7 @@ class RideController():
                 'status': 'success',
                 'message': 'Ride fetched successfully',
                 'data': {
-                    'rideId': [one_ride['ride_id']],
+                    'rideId': one_ride['ride_id'],
                     'departure': one_ride['departure'],
                     'origin': one_ride['origin'],
                     'destination': one_ride['destination'],
