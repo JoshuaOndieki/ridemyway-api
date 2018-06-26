@@ -21,12 +21,12 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
     def test_creates_a_ride_successfully_with_valid_data(self):
         data = {
-            'data':
-                [{'departure': 'Jun 25 2018  1:30PM',
-                  'origin': 'Nairobi',
-                  'destination': 'Garissa',
-                  'cost': 350, 'vehicle_number_plate':
-                  'KBC-A21', 'capacity': 3}]}
+            'departure': 'Jun 25 2018  1:30PM',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': 350, 'vehicle_number_plate':
+            'KBC-A21', 'capacity': 3
+            }
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
@@ -38,12 +38,12 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
     def test_does_not_create_ride_with_invalid_date(self):
         data = {
-            'data':
-                [{'departure': 'Not a date',
-                  'origin': 'Nairobi',
-                  'destination': 'Garissa',
-                  'cost': 350, 'vehicle_number_plate':
-                  'KBC-A21', 'capacity': 3}]}
+            'departure': 'Not a date',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': 350, 'vehicle_number_plate':
+            'KBC-A21', 'capacity': 3
+            }
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
@@ -54,12 +54,12 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
     def test_cannot_create_ride_with_passed_date(self):
         data = {
-            'data':
-                [{'departure': 'Jun 25 1901  1:30PM',
-                  'origin': 'Nairobi',
-                  'destination': 'Garissa',
-                  'cost': 350, 'vehicle_number_plate':
-                  'KBC-A21', 'capacity': 3}]}
+            'departure': 'Jun 25 1901  1:30PM',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': 350, 'vehicle_number_plate':
+            'KBC-A21', 'capacity': 3
+            }
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
@@ -70,12 +70,12 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
     def test_does_not_create_ride_with_invalid_cost(self):
         data = {
-            'data':
-                [{'departure': 'Jun 25 2018  1:30PM',
-                  'origin': 'Nairobi',
-                  'destination': 'Garissa',
-                  'cost': '%^$', 'vehicle_number_plate':
-                  'KBC-A21', 'capacity': 3}]}
+            'departure': 'Jun 25 2018  1:30PM',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': '%^$', 'vehicle_number_plate':
+            'KBC-A21', 'capacity': 3
+            }
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
@@ -86,12 +86,12 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
     def test_does_not_create_ride_with_invalid_capacity(self):
         data = {
-            'data':
-                [{'departure': 'Jun 25 2018  1:30PM',
-                  'origin': 'Nairobi',
-                  'destination': 'Garissa',
-                  'cost': 350, 'vehicle_number_plate':
-                  'KBC-A21', 'capacity': 'hundred'}]}
+            'departure': 'Jun 25 2018  1:30PM',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': 350, 'vehicle_number_plate':
+            'KBC-A21', 'capacity': 'hundred'
+            }
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
@@ -102,12 +102,12 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
     def test_does_not_create_ride_with_invalid_vehicle_number_plate(self):
         data = {
-            'data':
-                [{'departure': 'Jun 25 2018  1:30PM',
-                  'origin': 'Nairobi',
-                  'destination': 'Garissa',
-                  'cost': 350, 'vehicle_number_plate':
-                  2121, 'capacity': 3}]}
+            'departure': 'Jun 25 2018  1:30PM',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': 350, 'vehicle_number_plate':
+            2121, 'capacity': 3
+            }
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
