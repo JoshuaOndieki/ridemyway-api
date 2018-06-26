@@ -21,7 +21,7 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
     def test_creates_a_ride_successfully_with_valid_data(self):
         data = {
-            'departure': 'Jun 25 2018  1:30PM',
+            'departure': 'Jun 25 6454  1:30PM',
             'origin': 'Nairobi',
             'destination': 'Garissa',
             'cost': 350, 'vehicle_number_plate':
@@ -47,9 +47,8 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
 
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
-        print(result)
         self.assertEqual(result['errors']['date'],
-                         'Invalid date given',
+                         'Date of departure is in invalid format',
                          msg='Should only accept correctly formatted dates!')
         self.assertEqual(self.response.status_code, 400)
 
@@ -65,7 +64,7 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['errors']['date'],
-                         'Invalid date given',
+                         'Date of departure is in the past',
                          msg='Should only accept future dates!')
         self.assertEqual(self.response.status_code, 400)
 
@@ -109,7 +108,6 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
             'cost': 350, 'vehicle_number_plate':
             2121, 'capacity': 3
             }
-
         self.response = self.client().post('/api/v1/rides', data=data)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['errors']['vehicleNumberPlate'],
