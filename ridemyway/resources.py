@@ -15,5 +15,5 @@ class All(Resource):
             Returns:
                 All database items
         """
-        
+
         return {'message': 'all'}, 201
