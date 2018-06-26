@@ -16,26 +16,27 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.headers = {'content-type': 'application/json'}
         self.context = self.app.app_context()
         self.context.push()
+
+        # Create rides for testing
         data = {
-            'data': [
-                {'departure': 'Jun 25 2018  1:30PM',
-                 'origin': 'Nairobi',
-                 'destination': 'Garissa',
-                 'cost': 350,
-                 'vehicle_number_plate': 'KBC-A21',
-                 'capacity': 3
-                 },
-                {'departure': 'Jun 28 2018  7:00AM',
-                 'origin': 'Garissa',
-                 'destination': 'Nairobi',
-                 'cost': 500,
-                 'vehicle_number_plate': 'KBC-A21',
-                 'capacity': 3
-                 }
-                ]
+            'departure': 'Jun 25 2018  1:30PM',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': 350,
+            'vehicle_number_plate': 'KBC-A21',
+            'capacity': 3
+            }
+        data_1 = {
+            'departure': 'Jun 28 2018  7:00AM',
+            'origin': 'Garissa',
+            'destination': 'Nairobi',
+            'cost': 500,
+            'vehicle_number_plate': 'KBC-A21',
+            'capacity': 3
             }
 
         self.client().post('/api/v1/rides', data=data)
+        self.client().post('/api/v1/rides', data=data_1)
 
     def tearDown(self):
         self.context.pop()
@@ -44,7 +45,7 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.response = self.client().get('/api/v1/rides')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['message'],
-                         'Rides retrieved successfully',
+                         'Rides fetched successfully',
                          msg='Should fetch rides successfully!')
         self.assertEqual(self.response.status_code, 200)
 
@@ -52,7 +53,7 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.response = self.client().get('/api/v1/rides/1')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['message'],
-                         'Ride retrieved successfully',
+                         'Ride fetched successfully',
                          msg='Should fetch single ride given a valid ride id!')
         self.assertEqual(self.response.status_code, 200)
 
