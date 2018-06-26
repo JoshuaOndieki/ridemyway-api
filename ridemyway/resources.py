@@ -71,6 +71,9 @@ class Request(Resource):
         pass
 
     def post(self, rideId):
+        """
+            Creates a ride request
+        """
         return(ride_requests.create_request())
 
 
