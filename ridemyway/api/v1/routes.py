@@ -9,5 +9,5 @@ add = api.add_resource
 
 
 # Add routes here
+
 add(r.All, '/all')                                      # GET
-add(r.Rides, '/rides')                                  # POST

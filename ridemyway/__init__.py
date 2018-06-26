@@ -41,7 +41,6 @@ def create_app(config_name):
     app = Flask(__name__)
     app.database = database
     app.config.from_object(config[config_name])
-    app.config['BUNDLE_ERRORS'] = True
     app.config['JWT_SECRET_KEY'] = 'super-secret'
     app.config['JWT_BLACKLIST_ENABLED'] = True
     app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
