@@ -74,7 +74,7 @@ class Request(Resource):
         """
             Creates a ride request
         """
-        return(ride_requests.create_request())
+        return(ride_requests.create_request(rideId))
 
 
 class All(Resource):
