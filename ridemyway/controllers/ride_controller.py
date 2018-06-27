@@ -54,7 +54,7 @@ class RideController():
                       ride['destination']
                       }
                 }
-            return(status)
+            return status
         except Exception as e:
             status = {
                 'status': 'failed',
@@ -68,7 +68,7 @@ class RideController():
                         }
                     ]
                 }
-            return(status)
+            return status
 
     def fetch_one(self, ride_id):
         """
