@@ -37,7 +37,7 @@ def is_number(number):
     try:
         float(number)
         return True
-    except ValueError or TypeError:
+    except (ValueError, TypeError):
         return False
 
 
@@ -49,5 +49,5 @@ def is_int(number):
     try:
         int(number)
         return True
-    except ValueError or TypeError:
+    except (ValueError, TypeError):
         return False
