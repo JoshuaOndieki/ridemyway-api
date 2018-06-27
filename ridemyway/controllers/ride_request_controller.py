@@ -36,7 +36,7 @@ class RequestController():
                 'message': 'Ride request created successfully',
                 'attributes': {
                     'location':
-                    '/api/v1/rides/' + request['ride_id'] + '/requests'
+                    '/api/v1/rides/' + str(request['ride_id']) + '/requests'
                     }
                 }
             return status, 201
