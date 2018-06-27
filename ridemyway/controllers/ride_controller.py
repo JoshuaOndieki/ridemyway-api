@@ -30,29 +30,25 @@ class RideController():
                 ride_id = 1
             date_offered = datetime.now().strftime('%b %d %Y %H:%M%p')
             self.new_ride = Ride(
-                                ride_id=ride_id,
-                                departure=kwargs['departure'],
-                                origin=kwargs['origin'],
-                                destination=kwargs['destination'],
-                                vehicle_number_plate=
-                                kwargs['vehicle_number_plate'],
-                                capacity=kwargs['capacity'],
-                                cost=kwargs['cost'],
-                                date_offered=date_offered,
-                                availability='available')
+                ride_id=ride_id,
+                departure=kwargs['departure'],
+                origin=kwargs['origin'],
+                destination=kwargs['destination'],
+                vehicle_number_plate=kwargs['vehicle_number_plate'],
+                capacity=kwargs['capacity'],
+                cost=kwargs['cost'],
+                date_offered=date_offered,
+                availability='available')
             ride = self.new_ride.__dict__
             app.database['Rides'][self.new_ride.ride_id] = ride
             status = {
-                  'status': 'success',
-                  'message': 'Ride created successfully',
-                  'attributes': {
-                      'location':
-                      '/api/v1/rides/' + str(ride['ride_id']),
-                      'repr':
-                      str(ride['ride_id']) + ' - from ' +
-                      ride['origin'] + ' to ' +
-                      ride['destination']
-                      }
+                'status': 'success',
+                'message': 'Ride created successfully',
+                'attributes': {
+                    'location': '/api/v1/rides/' + str(ride['ride_id']),
+                    'repr': str(ride['ride_id']) + ' - from ' +
+                            ride['origin'] + ' to ' + ride['destination']
+                    }
                 }
             return status
         except Exception as e:
