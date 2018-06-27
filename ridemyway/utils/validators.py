@@ -29,15 +29,15 @@ def date_has_passed(date_text):
     return False
 
 
-def is_currency(currency):
+def is_number(number):
     """
-        Returns true if currency is a valid currency value
+        Returns true if number is a valid number value
         False otherwise
     """
     try:
-        float(currency)
+        float(number)
         return True
-    except Exception:
+    except ValueError or TypeError:
         return False
 
 
@@ -49,5 +49,5 @@ def is_int(number):
     try:
         int(number)
         return True
-    except Exception:
+    except ValueError or TypeError:
         return False
