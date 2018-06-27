@@ -9,7 +9,7 @@ class RequestController():
         Controls all CRUD operations of the Request object.
     """
 
-    def create_request(self, **Kwargs):
+    def create_request(self, **kwargs):
         """
             Creates and adds a request to the app database.
 
@@ -18,7 +18,7 @@ class RequestController():
                 failed status otherwise.
         """
         try:
-            app.database['Rides'][Kwargs['ride_id']]
+            app.database['Rides'][kwargs['ride_id']]
             request_ids = [x for x in app.database['Requests']]
             if request_ids:
                 request_id = max(request_ids) + 1
@@ -26,7 +26,7 @@ class RequestController():
                 request_id = 1
             self.new_request = Request(
                 request_id=request_id,
-                ride_id=Kwargs['ride_id'],
+                ride_id=kwargs['ride_id'],
                 status='available'
                 )
             request = self.new_request.__dict__

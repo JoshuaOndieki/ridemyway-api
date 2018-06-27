@@ -10,7 +10,7 @@ class RideController():
         Controls all CRUD operations of the Ride object.
     """
 
-    def create_ride(self, **Kwargs):
+    def create_ride(self, **kwargs):
         """
             Creates and adds a ride to the app database.
 
@@ -27,13 +27,13 @@ class RideController():
             date_offered = datetime.now().strftime('%b %d %Y %H:%M%p')
             self.new_ride = Ride(
                                 ride_id=ride_id,
-                                departure=Kwargs['departure'],
-                                origin=Kwargs['origin'],
-                                destination=Kwargs['destination'],
+                                departure=kwargs['departure'],
+                                origin=kwargs['origin'],
+                                destination=kwargs['destination'],
                                 vehicle_number_plate=
-                                Kwargs['vehicle_number_plate'],
-                                capacity=Kwargs['capacity'],
-                                cost=Kwargs['cost'],
+                                kwargs['vehicle_number_plate'],
+                                capacity=kwargs['capacity'],
+                                cost=kwargs['cost'],
                                 date_offered=date_offered,
                                 availability='available')
             ride = self.new_ride.__dict__
