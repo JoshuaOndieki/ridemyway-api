@@ -5,13 +5,13 @@ from flask_jwt_extended import (create_access_token,
 from flask import current_app as app
 import json
 from ridemyway.controllers.ride_controller import RideController
-from ridemyway.controllers.ride_requests_controller import RequestController
+from ridemyway.controllers.ride_request_controller import RequestController
 
 from .utils import errors
 
 
 rides = RideController()
-ride_requests = RequestController
+ride_requests = RequestController()
 
 
 class Rides(Resource):
