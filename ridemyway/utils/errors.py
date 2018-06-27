@@ -39,6 +39,6 @@ def create_ride(**kwargs):
         response['errors']['vehicleNumberPlate'] = 'Invalid vehicle number plate given'
 
     response['meta']['errors'] = len(response['errors'])
-    if len(response['errors']) > 0:
+    if response['errors']:
         return response
     return False
