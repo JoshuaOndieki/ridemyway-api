@@ -2,16 +2,16 @@
     Flask RestFul resources
 """
 
+import json
 
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import (create_access_token,
                                 create_refresh_token, jwt_required,
                                 get_jwt_identity, get_raw_jwt)
 from flask import current_app as app
-import json
+
 from ridemyway.controllers.ride_controller import RideController
 from ridemyway.controllers.ride_request_controller import RequestController
-
 from .utils import errors
 
 
@@ -60,8 +60,8 @@ class Rides(Resource):
         """
             Fetches all rides
         """
-        fetched_rides = rides.fetch_all()
-        return(fetched_rides), 200
+        self.fetched_rides = rides.fetch_all()
+        return(self.fetched_rides), 200
 
 
 class Ride(Resource):
@@ -76,7 +76,8 @@ class Ride(Resource):
         """
             Fetches a single ride
         """
-        return rides.fetch_one(ride_id)
+        self.id = ride_id
+        return rides.fetch_one(self.id)
 
 
 class Request(Resource):
@@ -91,7 +92,8 @@ class Request(Resource):
         """
             Creates a ride request
         """
-        return ride_requests.create_request(ride_id=ride_id)
+        self.id = ride_id
+        return ride_requests.create_request(ride_id=self.id)
 
 
 class All(Resource):
@@ -107,5 +109,6 @@ class All(Resource):
             Returns:
                 All database items
         """
+        self.all = app.database
 
-        return {'message': 'all'}, 201
+        return {'data': self.all}, 201

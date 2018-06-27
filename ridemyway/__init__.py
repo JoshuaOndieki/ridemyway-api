@@ -4,9 +4,10 @@
 
 
 from flask import Flask
+from flask_jwt_extended import JWTManager
+
 from config import config
 from .api.v1.routes import v1
-from flask_jwt_extended import JWTManager
 
 
 # An in memory database

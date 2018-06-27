@@ -63,7 +63,7 @@ class RideController():
         """
         try:
             one_ride = app.database['Rides'][ride_id]
-            fetched_ride = {
+            self.fetched_ride = {
                 'status': 'success',
                 'message': 'Ride fetched successfully',
                 'data': {
@@ -77,7 +77,7 @@ class RideController():
                     'dateoffered': one_ride['date_offered']
                     }
                 }
-            return fetched_ride, 200
+            return self.fetched_ride, 200
         except KeyError:
             error_message_404 = 'Chapter 404: The Lost Resource. \
             A careful and diligent search \
@@ -105,7 +105,7 @@ class RideController():
                 All available rides,
         """
         rides_count = 0
-        fetched_rides = {
+        self.fetched_rides = {
             'status': 'success',
             'message': 'Rides fetched successfully',
             'meta': {
@@ -117,7 +117,7 @@ class RideController():
             if date_has_passed(value['departure']):
                 continue
             rides_count += 1
-            fetched_rides['data'][key] = {
+            self.fetched_rides['data'][key] = {
                 'departure': value['departure'],
                 'origin': value['origin'],
                 'destination': value['destination'],
@@ -126,5 +126,5 @@ class RideController():
                 'capacity': value['capacity'],
                 'dateoffered': value['date_offered']
                 }
-        fetched_rides['meta']['rides'] = rides_count
-        return fetched_rides
+        self.fetched_rides['meta']['rides'] = rides_count
+        return self.fetched_rides
