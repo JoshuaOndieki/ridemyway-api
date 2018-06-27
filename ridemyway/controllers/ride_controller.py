@@ -2,10 +2,12 @@
     Controller for endpoints on rides
 """
 
-from ridemyway.models.ride import Ride
-from datetime import datetime
-from flask import current_app as app
 import re
+from datetime import datetime
+
+from flask import current_app as app
+
+from ridemyway.models.ride import Ride
 from ridemyway.utils.validators import date_has_passed
 
 

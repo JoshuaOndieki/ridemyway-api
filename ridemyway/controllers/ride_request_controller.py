@@ -3,9 +3,11 @@
 """
 
 
-from ridemyway.models.request import Request
-from flask import current_app as app
 import re
+
+from flask import current_app as app
+
+from ridemyway.models.request import Request
 from ridemyway.utils.validators import date_has_passed
 
 
