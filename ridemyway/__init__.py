@@ -1,3 +1,8 @@
+"""
+    App factory module
+"""
+
+
 from flask import Flask
 from config import config
 from .api.v1.routes import v1
@@ -50,6 +55,9 @@ def create_app(config_name):
 
     @app.jwt.token_in_blacklist_loader
     def check_if_token_in_blacklist(decrypted_token):
+        """
+            Check for blacklisted tokens
+        """
         jti = decrypted_token['jti']
         return jti in app.blacklist
 

@@ -1,3 +1,8 @@
+"""
+    Validates given args with defined formats and conditions
+"""
+
+
 from datetime import datetime
 
 

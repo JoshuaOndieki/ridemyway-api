@@ -1,3 +1,8 @@
+"""
+    Request model
+"""
+
+
 class Request():
     """
         Creates Request objects.

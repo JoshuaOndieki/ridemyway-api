@@ -1,3 +1,7 @@
+"""
+    Module for testing ride requests
+"""
+
 import unittest
 import json
 from ridemyway import create_app
@@ -10,6 +14,9 @@ class TestCreateRideRequestAPIEndpoint(unittest.TestCase):
     """
 
     def setUp(self):
+        """
+            Set up tests
+        """
         self.app = create_app(config_name='testing')
         self.client = self.app.test_client
         self.headers = {'content-type': 'application/json'}
@@ -36,9 +43,15 @@ class TestCreateRideRequestAPIEndpoint(unittest.TestCase):
         self.client().post('/api/v1/rides', data=data_1)
 
     def tearDown(self):
+        """
+            Teardown all files and instances created
+        """
         self.context.pop()
 
     def test_creates_a_ride_request_successfully_with_existing_ride(self):
+        """
+            Test ride request is created successfully for existing rides
+        """
         self.response = self.client().post('/api/v1/rides/1/requests')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['message'],
@@ -48,6 +61,9 @@ class TestCreateRideRequestAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 201)
 
     def test_does_not_create_a_request_to_nonexistent_ride(self):
+        """
+            Test requests to non existing rides edge case
+        """
         self.response = self.client().get('/api/v1/rides/6454')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['status'], 'failed',

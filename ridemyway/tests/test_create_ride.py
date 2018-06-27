@@ -1,3 +1,7 @@
+"""
+    Module for testing create ride
+"""
+
 import unittest
 import json
 from ridemyway import create_app
@@ -10,6 +14,9 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
     """
 
     def setUp(self):
+        """
+            Set up tests
+        """
         self.app = create_app(config_name='testing')
         self.client = self.app.test_client
         self.headers = {'content-type': 'application/json'}
@@ -17,9 +24,15 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.context.push()
 
     def tearDown(self):
+        """
+            Teardown all test files and instances created
+        """
         self.context.pop()
 
     def test_creates_a_ride_successfully_with_valid_data(self):
+        """
+            Test sucess creating a ride
+        """
         data = {
             'departure': 'Jun 25 6454  1:30PM',
             'origin': 'Nairobi',
@@ -37,6 +50,9 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 201)
 
     def test_does_not_create_ride_with_invalid_date(self):
+        """
+            Test invalid date edge case on creating a ride
+        """
         data = {
             'departure': 'Not a date',
             'origin': 'Nairobi',
@@ -53,6 +69,9 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_cannot_create_ride_with_passed_date(self):
+        """
+            Test passed dates are not allowed on new rides
+        """
         data = {
             'departure': 'Jun 25 1901  1:30PM',
             'origin': 'Nairobi',
@@ -69,6 +88,9 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_cost(self):
+        """
+            Test invalid cost edge case
+        """
         data = {
             'departure': 'Jun 25 2018  1:30PM',
             'origin': 'Nairobi',
@@ -85,6 +107,9 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_capacity(self):
+        """
+            Test invalid capacity edge case
+        """
         data = {
             'departure': 'Jun 25 2018  1:30PM',
             'origin': 'Nairobi',
@@ -101,6 +126,9 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_vehicle_number_plate(self):
+        """
+            Test invalid vehicle number plate edge case
+        """
         data = {
             'departure': 'Jun 25 2018  1:30PM',
             'origin': 'Nairobi',

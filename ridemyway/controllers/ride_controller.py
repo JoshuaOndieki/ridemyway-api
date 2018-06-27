@@ -1,3 +1,7 @@
+"""
+    Controller for endpoints on rides
+"""
+
 from ridemyway.models.ride import Ride
 from datetime import datetime
 from flask import current_app as app
@@ -67,6 +71,13 @@ class RideController():
             return(status)
 
     def fetch_one(self, ride_id):
+        """
+            Fetches a single ride from the app database.
+
+            Returns:
+                The requested ride,
+                failed status if no such ride exists.
+        """
         try:
             one_ride = app.database['Rides'][ride_id]
             fetched_ride = {
@@ -104,6 +115,12 @@ class RideController():
             return status, 404
 
     def fetch_all(self):
+        """
+            Fetches all available rides from the app database.
+
+            Returns:
+                All available rides,
+        """
         rides_count = 0
         fetched_rides = {
             'status': 'success',

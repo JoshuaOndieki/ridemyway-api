@@ -1,3 +1,7 @@
+"""
+    Module for testing fetch rides
+"""
+
 import unittest
 import json
 from ridemyway import create_app
@@ -11,6 +15,9 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
     """
 
     def setUp(self):
+        """
+            Setup the tests
+        """
         self.app = create_app(config_name='testing')
         self.client = self.app.test_client
         self.headers = {'content-type': 'application/json'}
@@ -39,9 +46,15 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.client().post('/api/v1/rides', data=data_1)
 
     def tearDown(self):
+        """
+            Teardown all test files and instances created
+        """
         self.context.pop()
 
     def test_fetches_rides_successfully(self):
+        """
+            Test rides are fetched successfully
+        """
         self.response = self.client().get('/api/v1/rides')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['message'],
@@ -50,6 +63,9 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 200)
 
     def test_fetches_a_single_ride_with_valid_id(self):
+        """
+            Test a single ride can be fetched successfully
+        """
         self.response = self.client().get('/api/v1/rides/1')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['message'],
@@ -58,6 +74,9 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 200)
 
     def test_does_not_fetch_ride_that_does_not_exist(self):
+        """
+            Test fetching non existent ride edge case
+        """
         self.response = self.client().get('/api/v1/rides/6454')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['status'], 'failed',
@@ -65,6 +84,9 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 404)
 
     def test_does_not_fetch_wrong_ride(self):
+        """
+            Test the correct ride is fetched
+        """
         self.response = self.client().get('/api/v1/rides/1')
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['data']['rideId'], 1,

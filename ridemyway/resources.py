@@ -1,3 +1,8 @@
+"""
+    Flask RestFul resources
+"""
+
+
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import (create_access_token,
                                 create_refresh_token, jwt_required,
@@ -15,6 +20,9 @@ ride_requests = RequestController()
 
 
 class Rides(Resource):
+    """
+        Rides Resource
+    """
 
     def __init__(self):
         self.parser = reqparse.RequestParser()
@@ -57,15 +65,24 @@ class Rides(Resource):
 
 
 class Ride(Resource):
+    """
+        Ride Resource
+    """
 
     def __init__(self):
         pass
 
     def get(self, rideId):
+        """
+            Fetches a single ride
+        """
         return rides.fetch_one(rideId)
 
 
 class Request(Resource):
+    """
+        Request resource
+    """
 
     def __init__(self):
         pass
@@ -78,6 +95,9 @@ class Request(Resource):
 
 
 class All(Resource):
+    """
+        All Resource
+    """
 
     def __init__(self):
         pass

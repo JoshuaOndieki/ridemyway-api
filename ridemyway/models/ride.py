@@ -1,3 +1,8 @@
+"""
+    Ride model
+"""
+
+
 class Ride():
     """
         Creates Ride objects.

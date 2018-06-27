@@ -1,3 +1,7 @@
+"""
+    Register routes for the app
+"""
+
 from flask import Blueprint
 from flask_restful import Api
 from ridemyway import resources as r

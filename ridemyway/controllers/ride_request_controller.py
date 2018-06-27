@@ -1,3 +1,8 @@
+"""
+    Controller for endpoints on ride requests
+"""
+
+
 from ridemyway.models.request import Request
 from flask import current_app as app
 import re

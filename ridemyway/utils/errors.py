@@ -1,9 +1,14 @@
+"""
+    Module for checking errors
+"""
+
+
 from .validators import is_a_date, date_has_passed, is_currency, is_int
 
 
 def create_ride(**kwargs):
     """
-
+        Checks errors on create ride POST requests
     """
     response = {
         'status': 'failed',
