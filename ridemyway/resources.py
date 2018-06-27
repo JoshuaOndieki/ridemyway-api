@@ -5,11 +5,13 @@ from flask_jwt_extended import (create_access_token,
 from flask import current_app as app
 import json
 from ridemyway.controllers.ride_controller import RideController
+from ridemyway.controllers.ride_request_controller import RequestController
 
 from .utils import errors
 
 
 rides = RideController()
+ride_requests = RequestController()
 
 
 class Rides(Resource):
@@ -61,6 +63,18 @@ class Ride(Resource):
 
     def get(self, rideId):
         return rides.fetch_one(rideId)
+
+
+class Request(Resource):
+
+    def __init__(self):
+        pass
+
+    def post(self, rideId):
+        """
+            Creates a ride request
+        """
+        return(ride_requests.create_request(ride_id=rideId))
 
 
 class All(Resource):

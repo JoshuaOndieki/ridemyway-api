@@ -12,3 +12,4 @@ add = api.add_resource
 add(r.All, '/all')                                      # GET
 add(r.Rides, '/rides')                                  # GET, POST
 add(r.Ride, '/rides/<int:rideId>')                      # GET
+add(r.Request, '/rides/<int:rideId>/requests')          # POST

@@ -16,25 +16,24 @@ class TestCreateRideRequestAPIEndpoint(unittest.TestCase):
         self.context = self.app.app_context()
         self.context.push()
         data = {
-            'data': [
-                {'departure': 'Jun 25 2018  1:30PM',
-                 'origin': 'Nairobi',
-                 'destination': 'Garissa',
-                 'cost': 350,
-                 'vehicle_number_plate': 'KBC-A21',
-                 'capacity': 3
-                 },
-                {'departure': 'Jun 28 2018  7:00AM',
-                 'origin': 'Garissa',
-                 'destination': 'Nairobi',
-                 'cost': 500,
-                 'vehicle_number_plate': 'KBC-A21',
-                 'capacity': 3
-                 }
-                ]
+            'departure': 'Jun 25 2018  1:30PM',
+            'origin': 'Nairobi',
+            'destination': 'Garissa',
+            'cost': 350,
+            'vehicle_number_plate': 'KBC-A21',
+            'capacity': 3
+             }
+        data_1 = {
+            'departure': 'Jun 28 2018  7:00AM',
+            'origin': 'Garissa',
+            'destination': 'Nairobi',
+            'cost': 500,
+            'vehicle_number_plate': 'KBC-A21',
+            'capacity': 3
             }
 
         self.client().post('/api/v1/rides', data=data)
+        self.client().post('/api/v1/rides', data=data_1)
 
     def tearDown(self):
         self.context.pop()
