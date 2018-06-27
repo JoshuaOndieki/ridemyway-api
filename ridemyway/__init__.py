@@ -10,7 +10,7 @@ from flask_jwt_extended import JWTManager
 
 
 # An in memory database
-database = {"Users": {}, "Rides": {}, "Requests": {}}
+DATABASE = {"Users": {}, "Rides": {}, "Requests": {}}
 
 """
     ---------------------- DATA STRUCTURE -----------------
@@ -44,7 +44,7 @@ def create_app(config_name):
     :return: application instance
     """
     app = Flask(__name__)
-    app.database = database
+    app.database = DATABASE
     app.config.from_object(config[config_name])
     app.config['BUNDLE_ERRORS'] = True
     app.config['JWT_SECRET_KEY'] = 'super-secret'

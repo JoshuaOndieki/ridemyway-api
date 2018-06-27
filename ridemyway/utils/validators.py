@@ -29,25 +29,25 @@ def date_has_passed(date_text):
     return False
 
 
-def is_currency(a):
+def is_currency(currency):
     """
-        Returns true if a is a valid currency value
+        Returns true if currency is a valid currency value
         False otherwise
     """
     try:
-        float(a)
+        float(currency)
         return True
     except Exception:
         return False
 
 
-def is_int(a):
+def is_int(number):
     """
-        Returns true if a is an integer
+        Returns true if number is an integer
         False otherwise
     """
     try:
-        int(a)
+        int(number)
         return True
     except Exception:
         return False

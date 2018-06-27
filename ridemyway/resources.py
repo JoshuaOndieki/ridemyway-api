@@ -72,11 +72,11 @@ class Ride(Resource):
     def __init__(self):
         pass
 
-    def get(self, rideId):
+    def get(self, ride_id):
         """
             Fetches a single ride
         """
-        return rides.fetch_one(rideId)
+        return rides.fetch_one(ride_id)
 
 
 class Request(Resource):
@@ -87,11 +87,11 @@ class Request(Resource):
     def __init__(self):
         pass
 
-    def post(self, rideId):
+    def post(self, ride_id):
         """
             Creates a ride request
         """
-        return ride_requests.create_request(ride_id=rideId)
+        return ride_requests.create_request(ride_id=ride_id)
 
 
 class All(Resource):
