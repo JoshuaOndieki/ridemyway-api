@@ -55,8 +55,8 @@ def create_app(config_name):
 
     @app.route('/')
     def api_docs():
-        from flask import render_template
         """ Route to the api docs"""
+        from flask import render_template
         return render_template('api.html')
     # Register Blueprint here
     app.register_blueprint(v1, url_prefix="/api/v1")
