@@ -14,7 +14,7 @@ A few requirements to install, run and test this project.
 
 
 **Git** : Use git to git clone this project locally. [git](https://git-scm.com/)
-**Python3.6.5**
+**Python-3.6.5**
 
 
 ### Installing
@@ -25,28 +25,33 @@ Type `git clone https://github.com/JoshuaOndieki/ridemyway-api.git` in your term
 5. Run the app with `python run.py` or `python3 run.py`
 6. Checkout the endpoints and test them with a tool like [POSTMAN](https://www.getpostman.com)
 
-#### Heroku
-This Flask API has been hosted to heroku at [RideMyWay](https://ridemyway-app.herokuapp.com)
+## Heroku
+This Flask API has been hosted and is live at Heroku here [RideMyWay](https://ridemyway-app.herokuapp.com)
+
+### Deployment
+[Check out this step by step guide on how to deploy this app to Heroku](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)
 
 ## API ENDPOINTS
 
-
 EndPoint | Functionality
 -- | --
-
+POST `/api/v1/rides` | Creates a new ride
+GET `/api/v1/rides` | Fetches all available rides
+GET `/api/v1/rides/<ride_id>` | Fetches a single ride
+POST `/api/v1/auth/rides/<ride_id>/requests` | Creates a ride request
 
 
 A Pivotal tracker board was used in planning and managing this project. The board is publicly available [here](https://www.pivotaltracker.com/n/projects/2179581)
 
 ## Testing
 
-Run `nosetests` to see the tests pass.
-Manually test the endpoints with a tool like [POSTMAN](https://www.getpostman.com)
+Run `nosetests --with-coverage --cover-package=ridemyway` to see the coverage and passing tests.
+Manually test the endpoints with a tool like [POSTMAN](https://www.getpostman.com) on the endpoints provided above.
 
 ## Built With
 
 - Python-3.6.5
-- Flask
+- Flask-1.0.2
 
 ## Versioning
 
