@@ -1,8 +1,13 @@
+"""
+    Request model
+"""
+
+
 class Request():
     """
         Creates Request objects.
 
-        **Kwargs:
+        **kwargs:
             ride_id: A unique identifier of the ride the request is
                     being made to.
             request_id: A unique identifier for the request.
