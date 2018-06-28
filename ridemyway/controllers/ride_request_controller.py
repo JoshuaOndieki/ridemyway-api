@@ -3,11 +3,10 @@
 """
 
 
-import re
-
 from flask import current_app as app
 
 from ridemyway.models.request import Request
+from ridemyway.utils.response import Response
 
 
 class RequestController():
@@ -23,8 +22,7 @@ class RequestController():
                 A success status if success adding ride,
                 failed status otherwise.
         """
-        try:
-            app.database['Rides'][kwargs['ride_id']]
+        if kwargs['ride_id'] in app.database['Rides']:
             request_ids = [x for x in app.database['Requests']]
             if request_ids:
                 request_id = max(request_ids) + 1
@@ -37,30 +35,18 @@ class RequestController():
                 )
             request = self.new_request.__dict__
             app.database['Requests'][request['request_id']] = request
-            status = {
-                'status': 'success',
-                'message': 'Ride request created successfully',
-                'attributes': {
-                    'location':
-                    '/api/v1/rides/' + str(request['ride_id']) + '/requests'
-                    }
+            message = 'Ride request created successfully'
+            attributes = {
+                'location':
+                '/api/v1/rides/' + str(request['ride_id']) + '/requests'
                 }
-            return status, 201
-        except KeyError:
-            error_message_404 = 'Chapter 404: The Lost Resource. \
-            A careful and diligent search \
-            has been made for the desired resource, \
-            but it just cannot be found.'
-            status = {
-                'status': 'failed',
-                'message': 'NOT FOUND',
-                'meta': {
-                    'errors': 1
-                    },
-                'errors': [
-                    {
-                        404: re.sub(' +', ' ', error_message_404)
-                        }
-                    ]
-                }
-            return status, 404
+            response = Response.success(message=message, attributes=attributes)
+            return response, 201
+        meta = {'errors': 1,
+                'source': '/' + str(kwargs['ride_id']) + '/requests'}
+        message = 'NOT FOUND'
+        info = 'The ride you requested does not exist'
+        response = Response.failed(meta=meta,
+                                   message=message,
+                                   info=info)
+        return response, 404

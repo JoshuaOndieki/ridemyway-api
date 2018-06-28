@@ -2,12 +2,14 @@
     Module for testing fetch rides
 """
 
-import unittest
 import json
-from ridemyway import create_app
+import unittest
+
+from . import BaseTest
+from . import VALID_RIDE_DATASET, VALID_RIDE_DATASET_1
 
 
-class TestFetchRideAPIEndpoint(unittest.TestCase):
+class TestFetchRideAPIEndpoint(BaseTest):
     """
         Tests Fetch Ride API endpoint
         - Ride:     '/api/v1/rides'             # GET
@@ -16,38 +18,12 @@ class TestFetchRideAPIEndpoint(unittest.TestCase):
 
     def setUp(self):
         """
-            Setup the tests
+            Set up tests
         """
-        self.app = create_app(config_name='testing')
-        self.client = self.app.test_client
-        self.headers = {'content-type': 'application/json'}
-        self.context = self.app.app_context()
-        self.context.push()
-
+        super().setUp()
         # Create rides for testing
-        data = {
-            'departure': 'Jun 25 2018  1:30PM',
-            'origin': 'Nairobi',
-            'destination': 'Garissa',
-            'cost': 350,
-            'vehicle_number_plate': 'KBC-A21',
-            'capacity': 3}
-        data_1 = {
-            'departure': 'Jun 28 2018  7:00AM',
-            'origin': 'Garissa',
-            'destination': 'Nairobi',
-            'cost': 500,
-            'vehicle_number_plate': 'KBC-A21',
-            'capacity': 3}
-
-        self.client().post('/api/v1/rides', data=data)
-        self.client().post('/api/v1/rides', data=data_1)
-
-    def tearDown(self):
-        """
-            Teardown all test files and instances created
-        """
-        self.context.pop()
+        self.client().post('/api/v1/rides', data=VALID_RIDE_DATASET)
+        self.client().post('/api/v1/rides', data=VALID_RIDE_DATASET_1)
 
     def test_fetches_rides_successfully(self):
         """
