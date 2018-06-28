@@ -1,12 +1,14 @@
-from flask_restful import Resource, reqparse
-from flask_jwt_extended import (create_access_token,
-                                create_refresh_token, jwt_required,
-                                get_jwt_identity, get_raw_jwt)
-from flask import current_app as app
+"""
+    Flask RestFul resources
+"""
+
 import json
+
+from flask_restful import Resource, reqparse
+from flask import current_app as app
+
 from ridemyway.controllers.ride_controller import RideController
 from ridemyway.controllers.ride_request_controller import RequestController
-
 from .utils import errors
 
 
@@ -15,6 +17,9 @@ ride_requests = RequestController()
 
 
 class Rides(Resource):
+    """
+        Rides Resource
+    """
 
     def __init__(self):
         self.parser = reqparse.RequestParser()
@@ -52,32 +57,46 @@ class Rides(Resource):
         """
             Fetches all rides
         """
-        fetched_rides = rides.fetch_all()
-        return(fetched_rides), 200
+        self.fetched_rides = rides.fetch_all()
+        return(self.fetched_rides), 200
 
 
 class Ride(Resource):
+    """
+        Ride Resource
+    """
 
     def __init__(self):
         pass
 
-    def get(self, rideId):
-        return rides.fetch_one(rideId)
+    def get(self, ride_id):
+        """
+            Fetches a single ride
+        """
+        self.id = ride_id
+        return rides.fetch_one(self.id)
 
 
 class Request(Resource):
+    """
+        Request resource
+    """
 
     def __init__(self):
         pass
 
-    def post(self, rideId):
+    def post(self, ride_id):
         """
             Creates a ride request
         """
-        return(ride_requests.create_request(ride_id=rideId))
+        self.id = ride_id
+        return ride_requests.create_request(ride_id=self.id)
 
 
 class All(Resource):
+    """
+        All Resource
+    """
 
     def __init__(self):
         pass
@@ -87,5 +106,6 @@ class All(Resource):
             Returns:
                 All database items
         """
+        self.all = app.database
 
-        return {'message': 'all'}, 201
+        return {'data': self.all}, 201

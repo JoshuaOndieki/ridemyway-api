@@ -1,3 +1,7 @@
+"""
+    Runs flask server
+"""
+
 from ridemyway import create_app
 
 

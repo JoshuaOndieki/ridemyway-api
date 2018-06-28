@@ -1,11 +1,17 @@
+"""
+    App factory module
+"""
+
+
 from flask import Flask
+from flask_jwt_extended import JWTManager
+
 from config import config
 from .api.v1.routes import v1
-from flask_jwt_extended import JWTManager
 
 
 # An in memory database
-database = {"Users": {}, "Rides": {}, "Requests": {}}
+DATABASE = {"Users": {}, "Rides": {}, "Requests": {}}
 
 """
     ---------------------- DATA STRUCTURE -----------------
@@ -39,7 +45,7 @@ def create_app(config_name):
     :return: application instance
     """
     app = Flask(__name__)
-    app.database = database
+    app.database = DATABASE
     app.config.from_object(config[config_name])
     app.config['BUNDLE_ERRORS'] = True
     app.config['JWT_SECRET_KEY'] = 'super-secret'
@@ -50,6 +56,9 @@ def create_app(config_name):
 
     @app.jwt.token_in_blacklist_loader
     def check_if_token_in_blacklist(decrypted_token):
+        """
+            Check for blacklisted tokens
+        """
         jti = decrypted_token['jti']
         return jti in app.blacklist
 
