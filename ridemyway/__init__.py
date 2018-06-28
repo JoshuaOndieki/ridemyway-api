@@ -18,21 +18,21 @@ DATABASE = {"Users": {}, "Rides": {}, "Requests": {}}
     {
         Users:
             {
-                username: [name, gender, age, usertype, date_joined, contacts,
-                email, password]
+                username: {name, gender, age, usertype, date_joined, contacts,
+                email, password}
                             ...
             }
 
         Rides:
             {
-                rideID: [dateoffered, departure, driver, contribution,
-                vehicle_number_plate, capacity, availability]
+                ride_id: {dateoffered, departure, driver, contribution,
+                vehicle_number_plate, capacity, availability}
                             ...
             }
 
         Requests:
             {
-                requestID: [passenger, rideID, status]
+                request_id: {passenger, ride_id, status}
                             ...
             }
     }
