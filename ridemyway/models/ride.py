@@ -1,8 +1,13 @@
+"""
+    Ride model
+"""
+
+
 class Ride():
     """
         Creates Ride objects.
 
-        **Kwargs:
+        **kwargs:
             ride_id: A unique identifier for the ride.
             departure: Date and time the ride is to take place.
             origin: Place where the ride starts.

@@ -1,34 +1,30 @@
+"""
+    Module for testing create ride
+"""
+
 import unittest
 import json
-from ridemyway import create_app
+
+from . import BaseTest
+from . import (VALID_RIDE_DATASET,
+               INVALID_DATE_DATASET,
+               PAST_DATE_DATASET,
+               INVALID_COST_DATASET,
+               INVALID_CAPACITY_DATASET,
+               INVALID_VEHICLE_NUMBER_PLATE)
 
 
-class TestCreateRideAPIEndpoint(unittest.TestCase):
+class TestCreateRideAPIEndpoint(BaseTest):
     """
         Tests Create Ride API endpoint
         - Ride:     '/api/v1/rides'         # POST
     """
 
-    def setUp(self):
-        self.app = create_app(config_name='testing')
-        self.client = self.app.test_client
-        self.headers = {'content-type': 'application/json'}
-        self.context = self.app.app_context()
-        self.context.push()
-
-    def tearDown(self):
-        self.context.pop()
-
     def test_creates_a_ride_successfully_with_valid_data(self):
-        data = {
-            'departure': 'Jun 25 6454  1:30PM',
-            'origin': 'Nairobi',
-            'destination': 'Garissa',
-            'cost': 350, 'vehicle_number_plate':
-            'KBC-A21', 'capacity': 3
-            }
-
-        self.response = self.client().post('/api/v1/rides', data=data)
+        """
+            Test success creating a ride
+        """
+        self.response = self.client().post('/api/v1/rides', data=VALID_RIDE_DATASET)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['message'],
                          'Ride created successfully',
@@ -37,15 +33,10 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 201)
 
     def test_does_not_create_ride_with_invalid_date(self):
-        data = {
-            'departure': 'Not a date',
-            'origin': 'Nairobi',
-            'destination': 'Garissa',
-            'cost': 350, 'vehicle_number_plate':
-            'KBC-A21', 'capacity': 3
-            }
-
-        self.response = self.client().post('/api/v1/rides', data=data)
+        """
+            Test invalid date edge case on creating a ride
+        """
+        self.response = self.client().post('/api/v1/rides', data=INVALID_DATE_DATASET)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['errors']['date'],
                          'Date of departure is in invalid format',
@@ -53,15 +44,10 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_cannot_create_ride_with_passed_date(self):
-        data = {
-            'departure': 'Jun 25 1901  1:30PM',
-            'origin': 'Nairobi',
-            'destination': 'Garissa',
-            'cost': 350, 'vehicle_number_plate':
-            'KBC-A21', 'capacity': 3
-            }
-
-        self.response = self.client().post('/api/v1/rides', data=data)
+        """
+            Test past dates are not allowed on new rides
+        """
+        self.response = self.client().post('/api/v1/rides', data=PAST_DATE_DATASET)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['errors']['date'],
                          'Date of departure is in the past',
@@ -69,15 +55,10 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_cost(self):
-        data = {
-            'departure': 'Jun 25 2018  1:30PM',
-            'origin': 'Nairobi',
-            'destination': 'Garissa',
-            'cost': '%^$', 'vehicle_number_plate':
-            'KBC-A21', 'capacity': 3
-            }
-
-        self.response = self.client().post('/api/v1/rides', data=data)
+        """
+            Test invalid cost edge case
+        """
+        self.response = self.client().post('/api/v1/rides', data=INVALID_COST_DATASET)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['errors']['cost'],
                          'Invalid cost given',
@@ -85,15 +66,10 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_capacity(self):
-        data = {
-            'departure': 'Jun 25 2018  1:30PM',
-            'origin': 'Nairobi',
-            'destination': 'Garissa',
-            'cost': 350, 'vehicle_number_plate':
-            'KBC-A21', 'capacity': 'hundred'
-            }
-
-        self.response = self.client().post('/api/v1/rides', data=data)
+        """
+            Test invalid capacity edge case
+        """
+        self.response = self.client().post('/api/v1/rides', data=INVALID_CAPACITY_DATASET)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['errors']['capacity'],
                          'Invalid capacity given',
@@ -101,14 +77,10 @@ class TestCreateRideAPIEndpoint(unittest.TestCase):
         self.assertEqual(self.response.status_code, 400)
 
     def test_does_not_create_ride_with_invalid_vehicle_number_plate(self):
-        data = {
-            'departure': 'Jun 25 2018  1:30PM',
-            'origin': 'Nairobi',
-            'destination': 'Garissa',
-            'cost': 350, 'vehicle_number_plate':
-            2121, 'capacity': 3
-            }
-        self.response = self.client().post('/api/v1/rides', data=data)
+        """
+            Test invalid vehicle number plate edge case
+        """
+        self.response = self.client().post('/api/v1/rides', data=INVALID_VEHICLE_NUMBER_PLATE)
         result = json.loads(self.response.data.decode())
         self.assertEqual(result['errors']['vehicleNumberPlate'],
                          'Invalid vehicle number plate given',
