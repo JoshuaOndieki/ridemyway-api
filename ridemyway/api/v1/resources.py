@@ -7,9 +7,9 @@ import json
 from flask_restful import Resource, reqparse
 from flask import current_app as app
 
-from ridemyway.controllers.ride_controller import RideController
-from ridemyway.controllers.ride_request_controller import RequestController
-from .utils import errors
+from .controllers.ride_controller import RideController
+from .controllers.ride_request_controller import RequestController
+from ridemyway.utils import errors
 
 
 rides = RideController()

@@ -4,7 +4,7 @@
 
 from flask import Blueprint
 from flask_restful import Api
-from ridemyway import resources as r
+from . import resources as r
 from ridemyway.utils.response import ERRORS
 
 
