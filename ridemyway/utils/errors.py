@@ -15,9 +15,8 @@ def create_ride(**kwargs):
     errors = {}
 
     # Check departure date is valid
-    if is_a_date(kwargs['departure']):
-        if date_has_passed(kwargs['departure']):
-            errors['date'] = 'Date of departure is in the past'
+    if is_a_date(kwargs['departure']) and date_has_passed(kwargs['departure']):
+        errors['date'] = 'Date of departure is in the past'
     else:
         errors['date'] = 'Date of departure is in invalid format'
 
@@ -26,7 +25,7 @@ def create_ride(**kwargs):
         errors['cost'] = 'Invalid cost given'
 
     # Check capacity is only a number
-    if is_int(kwargs['capacity']) is not True:
+    if not is_int(kwargs['capacity']):
         errors['capacity'] = 'Invalid capacity given'
 
     # Check number plate is not a number
@@ -35,6 +34,5 @@ def create_ride(**kwargs):
 
     meta = {'errors': len(errors)}
     if errors:
-        response = Response.failed(meta=meta, message=message, errors=errors)
-        return response
+        return Response.failed(meta=meta, message=message, errors=errors)
     return False

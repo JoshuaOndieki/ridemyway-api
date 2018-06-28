@@ -63,7 +63,7 @@ class TestFetchRideAPIEndpoint(BaseTest):
         """
         self.response = self.client().get('/api/v1/rides/1')
         result = json.loads(self.response.data.decode())
-        self.assertEqual(result['data']['rideId'], 1,
+        self.assertEqual(result['data']['ride_id'], 1,
                          msg='Should be able to fetch the correct ride\
                           with the id given in the url!')
 

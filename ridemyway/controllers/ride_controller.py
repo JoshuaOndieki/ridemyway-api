@@ -47,8 +47,7 @@ class RideController():
             'location': '/rides/' + str(ride['ride_id']),
             'repr': self.new_ride.__repr__()
             }
-        response = Response.success(message=message, attributes=attributes)
-        return response
+        return Response.success(message=message, attributes=attributes)
 
     def fetch_one(self, ride_id):
         """
@@ -59,24 +58,13 @@ class RideController():
                 failed status if no such ride exists.
         """
         try:
-            one_ride = app.database['Rides'][ride_id]
-            self.fetched_ride = {
-                'rideId': one_ride['ride_id'],
-                'departure': one_ride['departure'],
-                'origin': one_ride['origin'],
-                'destination': one_ride['destination'],
-                'cost': one_ride['cost'],
-                'vehicleNumberPlate': one_ride['vehicle_number_plate'],
-                'capacity': one_ride['capacity'],
-                'dateoffered': one_ride['date_offered']
-                }
+            self.ride = app.database['Rides'][ride_id]
             message = 'Ride fetched successfully'
-            response = Response.success(message=message, data=self.fetched_ride)
-            return response, 200
+            return Response.success(message=message, data=self.ride), 200
         except KeyError:
             meta = {'errors': 1, 'source': '/rides/' + str(ride_id)}
             message = 'NOT FOUND'
-            info = 'That ride doesn\'t exist'
+            info = 'That ride does not exist'
             response = Response.failed(meta=meta,
                                        message=message,
                                        info=info)
@@ -96,15 +84,7 @@ class RideController():
             if date_has_passed(value['departure']):
                 continue
             rides_count += 1
-            self.fetched_rides[key] = {
-                'departure': value['departure'],
-                'origin': value['origin'],
-                'destination': value['destination'],
-                'cost': value['cost'],
-                'vehicle_number_plate': value['vehicle_number_plate'],
-                'capacity': value['capacity'],
-                'dateoffered': value['date_offered']
-                }
+            self.fetched_rides[key] = value
         response = Response.success(message=message,
                                     data=self.fetched_rides,
                                     meta={'rides': rides_count})

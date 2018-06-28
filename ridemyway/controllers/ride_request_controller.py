@@ -46,7 +46,5 @@ class RequestController():
                 'source': '/' + str(kwargs['ride_id']) + '/requests'}
         message = 'NOT FOUND'
         info = 'The ride you requested does not exist'
-        response = Response.failed(meta=meta,
-                                   message=message,
-                                   info=info)
+        response = Response.failed(meta=meta, message=message, info=info)
         return response, 404
