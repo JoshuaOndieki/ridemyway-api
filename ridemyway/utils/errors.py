@@ -17,7 +17,7 @@ def create_ride(**kwargs):
     # Check departure date is valid
     if is_a_date(kwargs['departure']) and date_has_passed(kwargs['departure']):
         errors['date'] = 'Date of departure is in the past'
-    else:
+    elif not is_a_date(kwargs['departure']):
         errors['date'] = 'Date of departure is in invalid format'
 
     # Check cost is a valid currency value
