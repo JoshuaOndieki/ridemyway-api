@@ -34,17 +34,16 @@ class RequestController():
                 status='available'
                 )
             request = self.new_request.__dict__
-            app.database['Requests'][request['request_id']] = request
+            app.database['Requests'][request_id] = request
             message = 'Ride request created successfully'
             attributes = {
-                'location':
-                '/api/v1/rides/' + str(request['ride_id']) + '/requests'
+                'location': '/api/v1/rides/' + str(request_id) + '/requests'
                 }
             response = Response.success(message=message, attributes=attributes)
             return response, 201
         meta = {'errors': 1,
                 'source': '/' + str(kwargs['ride_id']) + '/requests'}
         message = 'NOT FOUND'
-        info = 'The ride you requested does not exist'
-        response = Response.failed(meta=meta, message=message, info=info)
+        response = Response.failed(meta=meta, message='NOT FOUND',
+                                   info='The ride requested does not exist')
         return response, 404
