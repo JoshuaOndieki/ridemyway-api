@@ -1,0 +1,134 @@
+FORMAT: 1A
+
+HOST: https://ridemyway-app.herokuapp.com/api/v1
+
+
+# Ride My Way API v1
+Ride-my App is a carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.
+
+# Group Rides
+
+Resources related to Rides
+
+## Rides [/rides]
+
+### Create Ride [POST]
+Creates a new ride offer
+
++ Request (Content-Type: application/json)
+
+        {
+            "departure": "Jun 28 2018  1:30PM",
+            "origin": "Nairobi",
+            "destination":"Garissa",
+            "cost": 350,
+            "vehicle_number_plate": "KBC-A21",
+            "capacity": 3
+        }
+
++ Response 201 (application/json)
+
+        {
+            "status": "success",
+            "meta": {},
+            "message": "Ride created successfully",
+            "attributes": {
+            "location": "/rides/1",
+            "repr": "1 - from Nairobi to Garissa"
+            }
+        }
+
+
+
+### Fetch All Rides [GET]
+Fetch all available ride offers
+
++ Request (application/json)
+
+
++ Response 200 (application/json)
+
+        {
+            "status": "success",
+            "meta": {
+                "rides": 2
+            },
+            "message": "Rides fetched successfully",
+            "data": {
+                "1": {
+                    "ride_id": 1,
+                    "departure": "Jun 28 2018  1:30PM",
+                    "origin": "Nairobi",
+                    "destination": "Garissa",
+                    "vehicle_number_plate": "KBC-A21",
+                    "capacity": "3",
+                    "cost": "350",
+                    "date_offered": "Jun 28 2018 10:55AM",
+                    "availability": "available"
+                },
+                "2": {
+                    "ride_id": 2,
+                    "departure": "Jun 30 2018  7:30AM",
+                    "origin": "Kisii",
+                    "destination": "Nakuru",
+                    "vehicle_number_plate": "KCB-A21",
+                    "capacity": "2",
+                    "cost": "500",
+                    "date_offered": "Jun 28 2018 11:30AM",
+                    "availability": "available"
+                }
+            }
+        }
+
+
+
+### Fetch One Ride  [GET /rides/{ride_id}]
+Fetch one ride offer
+
++ Request (application/json)
+
++ Parameter
+    + ride_id: `1` - The ID of the ride
+
++ Response 200 (application/json)
+
+        {
+            "status": "success",
+            "meta": {},
+            "message": "Ride fetched successfully",
+            "data": {
+                "ride_id": 1,
+                "departure": "Jun 28 2018  1:30PM",
+                "origin": "Nairobi",
+                "destination": "Garissa",
+                "vehicle_number_plate": "KBC-A21",
+                "capacity": "3",
+                "cost": "350",
+                "date_offered": "Jun 28 2018 10:55AM",
+                "availability": "available"
+            }
+        }
+
+# Group Requests
+Resources related to requests
+
+## Requests [/rides/{ride_id}/requests]
+
+### Create Request [POST]
+Create a request for a ride
+
++ Request (application/json)
+
++ Parameter
+    + ride_id: `1` - The ID of the ride
+
++ Response 201 (application/json)
+
+        {
+            "status": "success",
+            "meta": {},
+            "message": "Ride request created successfully",
+            "attributes": {
+                "location": "/api/v1/rides/1/requests"
+            }
+        }
