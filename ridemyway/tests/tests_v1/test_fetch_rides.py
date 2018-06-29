@@ -5,7 +5,7 @@
 import json
 import unittest
 
-from . import BaseTest
+from ridemyway.tests import BaseTest
 from . import VALID_RIDE_DATASET, VALID_RIDE_DATASET_1
 
 
