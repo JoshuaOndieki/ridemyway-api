@@ -1,5 +1,5 @@
 """
-    This module tests login
+    This module tests logout
 """
 import unittest
 
