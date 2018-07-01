@@ -12,6 +12,16 @@ VALID_DRIVER = {
     'password': 'pas@driver'
 }
 
+VALID_DRIVER_1 = {
+    'username': 'driver1',
+    'name': 'Issa Driver1',
+    'gender': 'female',
+    'usertype': 'driver',
+    'contacts': 254700000001,
+    'email': 'driver1@email.com',
+    'password': 'pas@driver'
+}
+
 VALID_RIDER = {
     'username': 'rider',
     'name': 'Issa Rider',
@@ -83,11 +93,69 @@ INVALID_GENDER = {
 }
 
 VALID_RIDE = {
-    'departure': '08/01/2018 08:00AM',
+    'departure': '08/01/2100 08:00AM',
     'cost': 50000,
     'vehicle': 'KDF-A21',
     'origin': 'Umoja',
     'destination': 'Andela',
     'available_capacity': 3,
     'notes': 'Some Notes here'
+}
+
+INVALID_RIDE_DATE = {
+    'departure': 'not a date',
+    'cost': 50000,
+    'vehicle': 'KDF-A21',
+    'origin': 'Umoja',
+    'destination': 'Andela',
+    'available_capacity': 3,
+    'notes': 'Some Notes here'
+}
+
+PAST_RIDE_DATE = {
+    'departure': '01/01/2018 12:00AM',
+    'cost': 50000,
+    'vehicle': 'KDF-A21',
+    'origin': 'Umoja',
+    'destination': 'Andela',
+    'available_capacity': 3,
+    'notes': 'Some Notes here'
+}
+
+INVALID_RIDE_COST = {
+    'departure': '08/01/2100 08:00AM',
+    'cost': 'hundred',
+    'vehicle': 'KDF-A21',
+    'origin': 'Umoja',
+    'destination': 'Andela',
+    'available_capacity': 3,
+    'notes': 'Some Notes here'
+}
+
+INVALID_RIDE_CAPACITY = {
+    'departure': '08/01/2100 08:00AM',
+    'cost': 50000,
+    'vehicle': 'KDF-A21',
+    'origin': 'Umoja',
+    'destination': 'Andela',
+    'available_capacity': 3.1,
+    'notes': 'Some Notes here'
+}
+
+GREATER_RIDE_CAPACITY = {
+    'departure': '08/01/2100 08:00AM',
+    'cost': 50000,
+    'vehicle': 'KDF-A21',
+    'origin': 'Umoja',
+    'destination': 'Andela',
+    'available_capacity': 6,
+    'notes': 'Some Notes here'
+}
+
+VALID_VEHICLE = {
+    'model': 'Model1',
+    'number_plate': 'KDF-A12',
+    'type': 'TypeA',
+    'color': 'Color Y',
+    'capacity': 4
 }

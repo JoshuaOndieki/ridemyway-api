@@ -5,7 +5,7 @@ import unittest
 
 from ridemyway.tests.tests_v2 import V2BaseTest
 from ridemyway.tests.tests_v2.urls import SIGNUP, LOGIN, RIDE
-from ridemyway.tests.tests_v2.data import VALID_DRIVER, VALID_RIDE
+from ridemyway.tests.tests_v2.data import VALID_DRIVER, VALID_VEHICLE
 
 
 class TestLogout(V2BaseTest):
@@ -20,7 +20,7 @@ class TestLogout(V2BaseTest):
         access_token = self.response.access_token
         # Attempt to do a protected action
         self.response = self.client().post(RIDE,
-                                           data=VALID_RIDE,
+                                           data=VALID_VEHICLE,
                                            headers=dict(
                                                Authorization="Bearer " +
                                                access_token))
