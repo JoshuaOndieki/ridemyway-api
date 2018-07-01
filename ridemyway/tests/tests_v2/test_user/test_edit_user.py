@@ -9,7 +9,7 @@ from ridemyway.tests.tests_v2.urls import SIGNUP, LOGIN, USER
 from ridemyway.tests.tests_v2.data import VALID_DRIVER
 
 
-class TestLogout(V2BaseTest):
+class TestEditUser(V2BaseTest):
     """
         Tests edit user API endpoint
         - Users:     '/api/v2/auth/users'         # PUT
@@ -23,7 +23,7 @@ class TestLogout(V2BaseTest):
         EDITS = {
             'name': 'New Name',
         }
-        self.response = self.client().post(USER,
+        self.response = self.client().put(USER,
                                            data=EDITS,
                                            headers=dict(
                                                Authorization="Bearer " +
@@ -39,7 +39,7 @@ class TestLogout(V2BaseTest):
         EDITS = {
             'username': 'newer',
         }
-        self.response = self.client().post(USER,
+        self.response = self.client().put(USER,
                                            data=EDITS,
                                            headers=dict(
                                                Authorization="Bearer " +
@@ -56,7 +56,7 @@ class TestLogout(V2BaseTest):
         EDITS = {
             'usertype': 'rider',
         }
-        self.response = self.client().post(USER,
+        self.response = self.client().put(USER,
                                            data=EDITS,
                                            headers=dict(
                                                Authorization="Bearer " +
@@ -73,7 +73,7 @@ class TestLogout(V2BaseTest):
         EDITS = {
             'date_joined': '31/12/1901 12:00AM',
         }
-        self.response = self.client().post(USER,
+        self.response = self.client().put(USER,
                                            data=EDITS,
                                            headers=dict(
                                                Authorization="Bearer " +
