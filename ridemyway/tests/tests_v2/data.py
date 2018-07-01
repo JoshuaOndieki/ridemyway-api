@@ -81,3 +81,13 @@ INVALID_GENDER = {
     'email': 'driver@email.com',
     'password': 'pas@rider'
 }
+
+VALID_RIDE = {
+    'departure': '08/01/2018 08:00AM',
+    'cost': 50000,
+    'vehicle': 'KDF-A21',
+    'origin': 'Umoja',
+    'destination': 'Andela',
+    'available_capacity': 3,
+    'notes': 'Some Notes here'
+}

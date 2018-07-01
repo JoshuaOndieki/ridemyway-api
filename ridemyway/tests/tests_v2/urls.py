@@ -7,3 +7,5 @@ ROOT_URL = '/api/v2'
 
 SIGNUP = ROOT_URL + '/auth/signup'
 LOGIN = ROOT_URL + '/auth/login'
+
+RIDE = ROOT_URL + '/rides'

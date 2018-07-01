@@ -1,5 +1,5 @@
 """
-    This module tests signup
+    This module tests login
 """
 import unittest
 import json
