@@ -16,13 +16,13 @@ class TestFetchUser(V2BaseTest):
 
     def test_fetch_user_successfully(self):
         self.client().post(SIGNUP, data=VALID_DRIVER)
-        self.response = self.client().get(USER)
+        self.response = self.client().get(USER + '/1')
         self.assertEqual(self.response.status_code, 200,
                          msg='Should return 200 status code for get user')
 
     def test_cannot_fetch_nonexistent_user(self):
         self.client().post(SIGNUP, data=VALID_DRIVER)
-        self.response = self.client().get(USER)
+        self.response = self.client().get(USER + '/6454')
         self.assertEqual(self.response.status_code, 404,
                          msg='Should return 404 status code for get nonuser')
 
