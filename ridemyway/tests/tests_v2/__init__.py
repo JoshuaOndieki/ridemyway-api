@@ -1,12 +1,14 @@
 """
-    BASE testing module
+    Version 2 BASE testing module
 """
+import os
+
 from ridemyway.tests import BaseTest
 
 
-class BaseTest(BaseTest):
+class V2BaseTest(BaseTest):
     """
-        Base class for testing
+        v2 Base class for testing
     """
     def setUp(self):
         """
@@ -14,8 +16,11 @@ class BaseTest(BaseTest):
         """
         super().setUp()
 
-    def tearDown(self):
-        """
-            Teardown all test files and instances created
-        """
-        super().tearDown()
+        # Do migrations
+        BASE_DIR = self.app.config['BASE_DIR']
+        makemigrations_cmd = 'python ' + BASE_DIR + '/manage.py makemigrations'
+        migrate_cmd = 'python ' + BASE_DIR + '/manage.py migrate'
+        os.system(makemigrations_cmd + ' >/dev/null 2>&1')
+        os.system(migrate_cmd + ' >/dev/null 2>&1')
+
+        self.context.push()

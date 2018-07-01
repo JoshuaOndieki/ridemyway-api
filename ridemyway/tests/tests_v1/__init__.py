@@ -1,6 +1,19 @@
 """
     BASE testing module
 """
+from ridemyway.tests import BaseTest
+
+
+class V1BaseTest(BaseTest):
+    """
+        v1 Base class for testing
+    """
+    def setUp(self):
+        """
+            Set up tests
+        """
+        super().setUp()
+        self.context.push()
 
 
 # TEST DATA

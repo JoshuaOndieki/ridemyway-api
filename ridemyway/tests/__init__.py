@@ -18,7 +18,6 @@ class BaseTest(unittest.TestCase):
         self.client = self.app.test_client
         self.headers = {'content-type': 'application/json'}
         self.context = self.app.app_context()
-        self.context.push()
 
     def tearDown(self):
         """
