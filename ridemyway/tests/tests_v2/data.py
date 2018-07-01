@@ -68,7 +68,7 @@ INVALID_USERTYPE = {
     'gender': 'male',
     'usertype': 'user',
     'contacts': 254700000000,
-    'email': 'whatsemail?',
+    'email': 'driver@email.com',
     'password': 'pas@rider'
 }
 
@@ -78,6 +78,6 @@ INVALID_GENDER = {
     'gender': 'both',
     'usertype': 'driver',
     'contacts': 254700000000,
-    'email': 'whatsemail?',
+    'email': 'driver@email.com',
     'password': 'pas@rider'
 }

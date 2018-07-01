@@ -19,7 +19,7 @@ from ridemyway.tests.tests_v2.data import (VALID_RIDER,
 class TestSignUp(V2BaseTest):
     """
         Tests signup API endpoint
-        - Ride:     '/api/v2/auth/signup'         # POST
+        - Auth:     '/api/v2/auth/signup'         # POST
     """
 
     def test_driver_can_signup_successfully(self):
