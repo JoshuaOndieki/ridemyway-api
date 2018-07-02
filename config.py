@@ -14,6 +14,7 @@ class Config:
     """
     SECRET_KEY = 'secret'
     WTF_CSRF_ENABLED = False
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 class TestingConfig(Config):

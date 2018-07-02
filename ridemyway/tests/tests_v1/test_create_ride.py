@@ -5,7 +5,7 @@
 import unittest
 import json
 
-from . import BaseTest
+from ridemyway.tests.tests_v1 import V1BaseTest
 from . import (VALID_RIDE_DATASET,
                INVALID_DATE_DATASET,
                PAST_DATE_DATASET,
@@ -14,7 +14,7 @@ from . import (VALID_RIDE_DATASET,
                INVALID_VEHICLE_NUMBER_PLATE)
 
 
-class TestCreateRideAPIEndpoint(BaseTest):
+class TestCreateRideAPIEndpoint(V1BaseTest):
     """
         Tests Create Ride API endpoint
         - Ride:     '/api/v1/rides'         # POST
