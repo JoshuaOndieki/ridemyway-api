@@ -18,9 +18,14 @@ class V2BaseTest(BaseTest):
 
         # Do migrations
         BASE_DIR = self.app.config['BASE_DIR']
-        makemigrations_cmd = 'python ' + BASE_DIR + '/manage.py makemigrations'
-        migrate_cmd = 'python ' + BASE_DIR + '/manage.py migrate'
-        os.system(makemigrations_cmd + ' >/dev/null 2>&1')
-        os.system(migrate_cmd + ' >/dev/null 2>&1')
+        database_name = self.app.config['DATABASE_NAME']
+        database_host = self.app.config['DATABASE_HOST']
+        database_username = self.app.config['DATABASE_USERNAME']
+        database_password = self.app.config['DATABASE_PASSWORD']
+        db_args = database_name + ' ' + database_host
+        user_args = database_username + ' ' + database_password
+        args = db_args + ' ' + user_args
+        migrate_command = 'python ' + BASE_DIR + '/manage.py migrate ' + args
+        os.system(migrate_command + ' >/dev/null 2>&1')
 
         self.context.push()
