@@ -12,7 +12,7 @@ from ridemyway.tests.tests_v2.data import (VALID_DRIVER,
                                            VALID_DRIVER_1)
 
 
-class TestCreateRide(V2BaseTest):
+class TestRideStatus(V2BaseTest):
     """
         Tests Ride Status Update API endpoint
         - Ride:     '/api/v2/rides/<ride_id>'         # PUT

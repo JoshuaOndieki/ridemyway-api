@@ -159,3 +159,11 @@ VALID_VEHICLE = {
     'color': 'Color Y',
     'capacity': 4
 }
+
+INVALID_VEHICLE_CAPACITY = {
+    'model': 'Model1',
+    'number_plate': 'KDF-A12',
+    'type': 'TypeA',
+    'color': 'Color Y',
+    'capacity': 4.1
+}
