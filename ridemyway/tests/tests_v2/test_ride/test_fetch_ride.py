@@ -10,8 +10,7 @@ from ridemyway.tests.tests_v2 import V2BaseTest
 from ridemyway.tests.tests_v2.urls import SIGNUP, LOGIN, RIDE, VEHICLE
 from ridemyway.tests.tests_v2.data import (VALID_DRIVER,
                                            VALID_RIDE,
-                                           VALID_VEHICLE,
-                                           VALID_DRIVER_1)
+                                           VALID_VEHICLE)
 
 
 class TestFetchRide(V2BaseTest):

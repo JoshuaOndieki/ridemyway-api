@@ -3,20 +3,13 @@
 """
 
 import unittest
-import json
 
 from ridemyway.tests.tests_v2 import V2BaseTest
 from ridemyway.tests.tests_v2.urls import SIGNUP, LOGIN, RIDE, VEHICLE
 from ridemyway.tests.tests_v2.data import (VALID_RIDER,
                                            VALID_DRIVER,
                                            VALID_RIDE,
-                                           INVALID_RIDE_DATE,
-                                           PAST_RIDE_DATE,
-                                           VALID_VEHICLE,
-                                           INVALID_RIDE_COST,
-                                           INVALID_RIDE_CAPACITY,
-                                           VALID_DRIVER_1,
-                                           GREATER_RIDE_CAPACITY)
+                                           VALID_VEHICLE)
 
 
 class TestCreateRide(V2BaseTest):
