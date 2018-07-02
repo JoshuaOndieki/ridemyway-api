@@ -4,6 +4,7 @@
 
 import unittest
 import json
+from datetime import datetime
 
 from ridemyway.tests.tests_v2 import V2BaseTest
 from ridemyway.tests.tests_v2.urls import SIGNUP, LOGIN, RIDE, VEHICLE
@@ -50,7 +51,6 @@ class TestCreateRide(V2BaseTest):
                         msg='Should fetch one ride successfully')
 
     def test_does_not_fetch_non_existent_ride(self):
-        self.create_ride()
         self.response = self.client().get(RIDE + '/6454')
         self.assertEqual(self.response.status_code, 404,
                          msg='404 for non existent rides')
@@ -81,18 +81,17 @@ class TestCreateRide(V2BaseTest):
         self.assertEqual(result['meta']['rides'], 0,
                          msg='Should not fetch cancelled ride')
 
-    def test_only_creater_can_update_ride_status(self):
-        self.create_ride()
-        self.client().post(SIGNUP, data=VALID_DRIVER_1)
-        self.response = self.client().post(LOGIN, data=VALID_DRIVER_1)
-        access_token = self.response.access_token
-        self.response = self.client().put(RIDE + '/1',
-                                          data={'status': 'cancelled'},
-                                          headers=dict(
-                                              Authorization="Bearer " +
-                                              access_token))
-        self.assertEqual(self.response.status_code, 403,
-                         msg='Only creators can update ride status')
+    def test_doesnot_fetch_expired_rides(self):
+        self.response = self.client().get(RIDE)
+        result = json.loads(self.response.data.decode())
+        expired_rides = 0
+        for ride in result['data']:
+            ride_date = result['data'][ride]['departure']
+            date_object = datetime.strptime(ride_date, '%b %d %Y %I:%M%p')
+            if date_object < datetime.now():
+                expired_rides += 1
+        self.assertEqual(expired_rides, 0,
+                         msg='Should not fetch expired rides')
 
 
 # Just incase a testing library is not used!
