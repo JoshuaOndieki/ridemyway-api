@@ -144,7 +144,8 @@ class TestCreateRide(V2BaseTest):
 
     def test_only_drivers_can_create_rides(self):
         self.client().post(SIGNUP, data=VALID_RIDER)
-        access_token = self.response = self.client().post(LOGIN, data=VALID_RIDER)
+        self.response = self.client().post(LOGIN, data=VALID_RIDER)
+        access_token = self.response.access_token
         self.response = self.client().post(RIDE, data=VALID_RIDE,
                                            headers=dict(
                                                Authorization="Bearer " +

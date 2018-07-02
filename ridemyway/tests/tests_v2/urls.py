@@ -13,5 +13,3 @@ USER = ROOT_URL + '/users'
 RIDE = ROOT_URL + '/rides'
 
 VEHICLE = ROOT_URL + '/vehicle'
-
-REQUEST = ROOT_URL + 'rides/<ride_id>/requests'
