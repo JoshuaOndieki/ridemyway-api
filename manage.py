@@ -112,10 +112,11 @@ def tables():
     number_plate = colored('number_plate', 'blue')
     driver = colored('driver', 'blue')
     model = colored("model", 'blue')
-    type = colored("type", 'blue')
+    vehicle_type = colored("vehicle_type", 'blue')
     color = colored("color", 'blue')
     capacity = colored("capacity", 'blue')
-    vehicles.field_names = [number_plate, driver, model, type, color, capacity]
+    vehicles.field_names = [number_plate, driver, model,
+                            vehicle_type, color, capacity]
     print(colored('\t\t\t\tVEHICLE TABLE', 'green', attrs=['bold']))
     print(vehicles)
 
