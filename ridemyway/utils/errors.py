@@ -1,9 +1,9 @@
 """
     Module for checking errors
 """
-
-
-from .validators import is_a_date, date_has_passed, is_number, is_int
+from .validators import (is_a_date, date_has_passed, is_number, is_int,
+                         is_alphanumeric, is_email, is_gender, is_usertype,
+                         is_name)
 from .response import Response
 
 
@@ -36,3 +36,23 @@ def create_ride(**kwargs):
     if errors:
         return Response.failed(meta=meta, message=message, errors=errors)
     return False
+
+
+def signup_errors(**kwargs):
+    message = 'Could not add user'
+    errors = {}
+    if not is_alphanumeric(kwargs['username']):
+        errors['username'] = 'Username should only be alphanumeric.'
+    if not is_name(kwargs['name']):
+        errors['name'] = 'Name should only have alphabets and spaces.'
+    if not is_email(kwargs['email']):
+        errors['email'] = 'Invalid email provided'
+    if not is_int(kwargs['contacts']):
+        errors['contacts'] = 'Contacts should be a number'
+    if not is_gender(kwargs['gender']):
+        errors['gender'] = 'Invalid gender provided'
+    if not is_usertype(kwargs['usertype']):
+        errors['usertype'] = 'Usertype not known. Opt either driver | rider'
+    meta = {'errors': len(errors)}
+    if errors:
+        return Response.failed(meta=meta, message=message, errors=errors)
