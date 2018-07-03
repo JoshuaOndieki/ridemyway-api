@@ -17,11 +17,11 @@ env:
     - TEST_DATABASE_NAME=travis_ci_test
     - DATABASE_HOST=localhost
     - DATABASE_USERNAME=postgres
-    - DATABASE_PASSWORD= 'travis'
+    - DATABASE_PASSWORD=travis
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - psql -c 'create user postgres WITH ENCRYPTED PASSWORD 'travis';' -U postgres
+  - psql -c 'create user postgres with password 'travis';' -U postgres
   - psql -c 'grant all privileges on database travis_ci_test to postgres;' -U postgres
 
 # command to run tests
