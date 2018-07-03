@@ -48,14 +48,7 @@ def create_app(config_name):
     app.database = DATABASE
     app.config.from_object(config[config_name])
     app.config['BUNDLE_ERRORS'] = True
-
-    @app.before_request
-    def before_request():
-        app.conn = app.config['DB_CONN']
-
-    @app.teardown_request
-    def teardown_request(exception):
-        app.conn.close()
+    app.conn = app.config['DB_CONN']
 
     @app.route('/')
     def api_docs():
