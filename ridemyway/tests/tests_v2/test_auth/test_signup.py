@@ -25,7 +25,8 @@ class TestSignUp(V2BaseTest):
     def test_driver_can_signup_successfully(self):
         self.response = self.client().post(SIGNUP, data=VALID_DRIVER)
         self.assertEqual(self.response.status_code, 201,
-                        msg='Should return 201 status code for successful driver creation')
+                         msg='Should return 201 status code' +
+                         ' for successful driver creation')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'success',
                         msg='Should return status success in response data')
@@ -33,7 +34,8 @@ class TestSignUp(V2BaseTest):
     def test_rider_can_signup_successfully(self):
         self.response = self.client().post(SIGNUP, data=VALID_RIDER)
         self.assertEqual(self.response.status_code, 201,
-                        msg='Should return 201 status code for successful rider creation')
+                         msg='Should return 201 status code for successful' +
+                         ' rider creation')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'success',
                         msg='Should return status success in response data')
@@ -42,7 +44,8 @@ class TestSignUp(V2BaseTest):
         self.client().post(SIGNUP, data=VALID_DRIVER)
         self.response = self.client().post(SIGNUP, data=VALID_DRIVER)
         self.assertEqual(self.response.status_code, 409,
-                        msg='Should return 409 status code for duplicate attempt')
+                         msg='Should return 409 status code for' +
+                         ' duplicate attempt')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -51,7 +54,8 @@ class TestSignUp(V2BaseTest):
         self.response = self.client().post(SIGNUP,
                                            data=SPECIAL_CHARS_USERNAME)
         self.assertEqual(self.response.status_code, 422,
-                        msg='Should return 422 status code for special chars in username')
+                         msg='Should return 422 status code' +
+                         ' for special chars in username')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -60,7 +64,8 @@ class TestSignUp(V2BaseTest):
         self.response = self.client().post(SIGNUP,
                                            data=SPECIAL_CHARS_NAME)
         self.assertEqual(self.response.status_code, 422,
-                        msg='Should return 422 status code for special chars in name')
+                         msg='Should return 422 status code for' +
+                         ' special chars in name')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -68,7 +73,7 @@ class TestSignUp(V2BaseTest):
     def test_does_not_allow_invalid_email_formats(self):
         self.response = self.client().post(SIGNUP, data=INVALID_EMAIL)
         self.assertEqual(self.response.status_code, 422,
-                        msg='Should return 422 status code for invalid email')
+                         msg='Should return 422 status code for invalid email')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -84,7 +89,8 @@ class TestSignUp(V2BaseTest):
     def test_contacts_is_a_number(self):
         self.response = self.client().post(SIGNUP, data=INVALID_CONTACTS)
         self.assertEqual(self.response.status_code, 422,
-                        msg='Should return 422 status code for invalid contacts')
+                         msg='Should return 422 status code for' +
+                         ' invalid contacts')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -92,7 +98,8 @@ class TestSignUp(V2BaseTest):
     def test_unknown_usertypes_not_allowed(self):
         self.response = self.client().post(SIGNUP, data=INVALID_USERTYPE)
         self.assertEqual(self.response.status_code, 422,
-                        msg='Should return 422 status code for invalid usertype')
+                         msg='Should return 422 status code for' +
+                         ' invalid usertype')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -100,7 +107,8 @@ class TestSignUp(V2BaseTest):
     def test_unknown_gender_types_not_allowed(self):
         self.response = self.client().post(SIGNUP, data=INVALID_GENDER)
         self.assertEqual(self.response.status_code, 422,
-                        msg='Should return 422 status code for invalid gender')
+                         msg='Should return 422 status code for' +
+                         ' invalid gender')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
