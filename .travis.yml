@@ -15,7 +15,7 @@ before_script:
   - psql -c "GRANT ALL PRIVILEGES ON DATABASE travis_ci_test TO yml;" -U postgres
 # env vars
 env:
-- FLASK_APP=run.py FLASK_ENV=testing TEST_DATABASE_NAME=travis_ci_test DATABASE_HOST=localhost DATABASE_USERNAME=travis DATABASE_PASSWORD=travis
+  - FLASK_APP=run.py FLASK_ENV=testing TEST_DATABASE_NAME=travis_ci_test DATABASE_HOST=localhost DATABASE_USERNAME=travis DATABASE_PASSWORD=travis
 # command to run tests
 script: nosetests  --with-coverage --cover-package=ridemyway && coveralls
 
