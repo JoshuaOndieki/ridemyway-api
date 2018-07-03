@@ -7,6 +7,20 @@ install:
   - pip install nose
   - pip install coveralls
   - pip install coverage
+# add services
+services: postgresql
+# env vars
+env:
+  global:
+    - FLASK_APP=run.py
+    - FLASK_ENV=testing
+    - TEST_DATABASE_NAME=travis_ci_test
+    - DATABASE_HOST=localhost
+    - DATABASE_USERNAME=postgres
+    - DATABASE_PASSWORD= ''
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 # command to run tests
 script: nosetests  --with-coverage --cover-package=ridemyway && coveralls
