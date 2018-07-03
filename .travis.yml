@@ -14,6 +14,7 @@ before_script:
   - psql -c "CREATE USER yml WITH PASSWORD 'travis';" -U postgres
   - psql -c "GRANT ALL PRIVILEGES ON DATABASE travis_ci_test TO yml;" -U postgres
 # env vars
+- source ~/virtualenv/python3.6/bin/activate
 env:
   - FLASK_APP=run.py FLASK_ENV=testing TEST_DATABASE_NAME=travis_ci_test DATABASE_HOST=localhost DATABASE_USERNAME=travis DATABASE_PASSWORD=travis
 # command to run tests
