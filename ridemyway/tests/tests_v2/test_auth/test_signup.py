@@ -81,10 +81,7 @@ class TestSignUp(V2BaseTest):
     def test_required_data(self):
         self.response = self.client().post(SIGNUP, data={})
         self.assertEqual(self.response.status_code, 400,
-                        msg='Should return 400 status code for empty data')
-        result = json.loads(self.response.data.decode())
-        self.assertTrue(result['status'] == 'failed',
-                        msg='Should return status failed in response data')
+                         msg='Should return 400 status code for empty data')
 
     def test_contacts_is_a_number(self):
         self.response = self.client().post(SIGNUP, data=INVALID_CONTACTS)
