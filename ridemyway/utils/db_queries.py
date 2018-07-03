@@ -30,10 +30,12 @@ def sql_signup(user):
 def get_user(username=None, email=None):
     cur = app.conn.cursor()
     search_by_username_email_sql = """
-    SELECT * FROM appuser WHERE username=%s OR email=%s;
+    SELECT * FROM appuser WHERE username='%s' OR email='%s';
     """ % (username, email)
     cur.execute(search_by_username_email_sql)
     exists = cur.fetchone()
+    app.conn.commit()
+    cur.close()
 
     if exists:
         return True
