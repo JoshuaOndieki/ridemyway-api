@@ -21,13 +21,16 @@ class AuthController():
         """
         now = datetime.now()
         kwargs['date_joined'] = now.strftime('%b %d %Y %H:%M%p')
-        user = User(kwargs)
-        user_exists = get_user(username=user.username, email=user.email)
+        self.user = User(kwargs)
+        user_exists = get_user(username=self.user.username,
+                               email=self.user.email)
         if user_exists:
             return Response.failed(message='Such user exists'), 409
-        sql_signup(user)
+        user_added = sql_signup(self.user)
         message = 'User created successfully'
         attributes = {
-            'location': '/api/v2/users/' + user.username
+            'location': '/api/v2/users/' + self.user.username
         }
-        return Response.success(message=message, attributes=attributes), 201
+        if user_added:
+            return Response.success(message=message, attributes=attributes), 201
+        return Response.failed(message='failed to add user'), 400
