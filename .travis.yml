@@ -18,3 +18,11 @@ before_script:
 script: nosetests  --with-coverage --cover-package=ridemyway && coveralls
 
 after_success: coveralls
+# env vars
+env:
+    - FLASK_APP=run.py
+    - FLASK_ENV=testing
+    - TEST_DATABASE_NAME=testdb
+    - DATABASE_HOST=localhost
+    - DATABASE_USERNAME=tester
+    - DATABASE_PASSWORD=andela21

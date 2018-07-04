@@ -1,11 +1,11 @@
 """
     Runs flask server
 """
-
+import os
 from ridemyway import create_app
 
-
-app = create_app('development')
+environment = os.getenv('FLASK_ENV', 'development')
+app = create_app(environment)
 
 
 if __name__ == "__main__":
