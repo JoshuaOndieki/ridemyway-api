@@ -23,7 +23,6 @@ def sql_signup(user):
         app.conn.commit()
         return True
     except psycopg2.Error:
-        print('Roll back, user not added')
         app.conn.rollback()
         return 0
 
