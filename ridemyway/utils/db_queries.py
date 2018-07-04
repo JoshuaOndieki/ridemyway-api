@@ -3,6 +3,7 @@
 """
 
 from flask import current_app as app
+import psycopg2
 
 
 def sql_signup(user):
@@ -17,11 +18,14 @@ def sql_signup(user):
             user.email,
             user.password)
     cur = app.conn.cursor()
-    cur.execute(sql, data)
-    app.conn.commit()
-    return True
-    print('Roll back, user not added')
-    app.conn.rollback
+    try:
+        cur.execute(sql, data)
+        app.conn.commit()
+        return True
+    except psycopg2.Error:
+        print('Roll back, user not added')
+        app.conn.rollback()
+        return 0
 
 
 def get_user(username=None, email=None):
