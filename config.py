@@ -14,6 +14,7 @@ class Config:
     Application configuration base class
     """
     SECRET_KEY = 'secret'
+    BUNDLE_ERRORS = True
     WTF_CSRF_ENABLED = False
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     DATABASE_NAME = os.getenv('DATABASE_NAME', 'ridemyway')

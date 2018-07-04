@@ -17,7 +17,7 @@ class AuthController():
 
     def signup(self, **kwargs):
         """
-
+            Controls the signup process
         """
         now = datetime.now()
         kwargs['date_joined'] = now.strftime('%b %d %Y %H:%M%p')
