@@ -9,16 +9,12 @@ install:
   - pip install coverage
 # add services
 services: postgresql
+# setup database
 before_script:
-  - psql -c "CREATE DATABASE travis_ci_test;" -U postgres
-  - psql -c "CREATE USER yml WITH PASSWORD 'travis';" -U postgres
-  - psql -c "GRANT ALL PRIVILEGES ON DATABASE travis_ci_test TO yml;" -U postgres
-# env vars
-- source ~/virtualenv/python3.6/bin/activate
+  - psql -c "CREATE DATABASE testdb;" -U postgres
+  - psql -c "CREATE USER tester WITH PASSWORD 'andela21';" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE testdb TO tester;" -U postgres
 # command to run tests
-script:
-    env:
-      - FLASK_APP=run.py FLASK_ENV=testing TEST_DATABASE_NAME=travis_ci_test DATABASE_HOST=localhost DATABASE_USERNAME=travis DATABASE_PASSWORD=travis
-    - nosetests  --with-coverage --cover-package=ridemyway && coveralls
+script: nosetests  --with-coverage --cover-package=ridemyway && coveralls
 
 after_success: coveralls
