@@ -7,6 +7,7 @@ from flask import Flask
 
 from config import config
 from .api.v1.routes import v1
+from .api.v2.routes import v2
 
 
 # An in memory database
@@ -46,15 +47,7 @@ def create_app(config_name):
     app = Flask(__name__, template_folder='../api_docs')
     app.database = DATABASE
     app.config.from_object(config[config_name])
-    app.config['BUNDLE_ERRORS'] = True
-
-    @app.before_request
-    def before_request():
-        app.conn = app.config['DB_CONN']
-
-    @app.teardown_request
-    def teardown_request(exception):
-        app.conn.close()
+    app.conn = app.config['DB_CONN']
 
     @app.route('/')
     def api_docs():
@@ -63,5 +56,6 @@ def create_app(config_name):
         return render_template('api.html')
     # Register Blueprint here
     app.register_blueprint(v1, url_prefix="/api/v1")
+    app.register_blueprint(v2, url_prefix="/api/v2")
 
     return app

@@ -7,8 +7,22 @@ install:
   - pip install nose
   - pip install coveralls
   - pip install coverage
-
+# add services
+services: postgresql
+# setup database
+before_script:
+  - psql -c "CREATE DATABASE testdb;" -U postgres
+  - psql -c "CREATE USER tester WITH PASSWORD 'travis';" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE testdb TO tester;" -U postgres
 # command to run tests
-script: nosetests  --with-coverage --cover-package=ridemyway && coveralls
+script:
+    - export FLASK_ENV=testing
+    - export FLASK_APP=run.py
+    - export DATABASE_NAME=testdb
+    - export TEST_DATABASE_NAME=testdb
+    - export DATABASE_USERNAME=tester
+    - export DATABASE_PASSWORD=travis
+    - export DATABASE_HOST=localhost
+    - nosetests  --with-coverage --cover-package=ridemyway && coveralls
 
 after_success: coveralls

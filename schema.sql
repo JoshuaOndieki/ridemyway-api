@@ -9,7 +9,7 @@ CREATE TABLE AppUser(
     gender VARCHAR(6) NOT NULL CHECK (gender IN ('male', 'female')),
     usertype VARCHAR(6) NOT NULL CHECK (usertype IN ('driver', 'rider')),
     date_joined VARCHAR(20) NOT NULL,
-    contacts INT,
+    contacts BIGINT NOT NULL,
     email VARCHAR(120) NOT NULL UNIQUE,
     password VARCHAR(256) NOT NULL
 );
@@ -17,8 +17,8 @@ CREATE TABLE AppUser(
 CREATE TABLE UserVehicle(
     number_plate VARCHAR(20) PRIMARY KEY,
     driver VARCHAR NOT NULL REFERENCES AppUser(username),
-    vehicle_type VARCHAR,
-    color VARCHAR,
+    vehicle_type VARCHAR NOT NULL,
+    color VARCHAR NOT NULL,
     capacity INT NOT NULL
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE UserRide(
     origin VARCHAR(256) NOT NULL,
     destination VARCHAR(256) NOT NULL,
     driver VARCHAR(50) NOT NULL REFERENCES AppUser(username),
-    cost INT NOT NULL,
+    cost BIGINT NOT NULL,
     vehicle VARCHAR(20) NOT NULL REFERENCES UserVehicle(number_plate),
     status VARCHAR NOT NULL CHECK (status IN ('active', 'cancelled', 'taken', 'expired')),
     available_capacity INT NOT NULL,
