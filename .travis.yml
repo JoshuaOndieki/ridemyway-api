@@ -20,7 +20,7 @@ script:
     - export FLASK_APP=run.py
     - export DATABASE_NAME=testdb
     - export TEST_DATABASE_NAME=testdb
-    - export DATABASE-USERNAME=tester
+    - export DATABASE_USERNAME=tester
     - export DATABASE_PASSWORD=travis
     - export DATABASE_HOST=localhost
     - nosetests  --with-coverage --cover-package=ridemyway && coveralls
