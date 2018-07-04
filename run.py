@@ -4,7 +4,7 @@
 import os
 from ridemyway import create_app
 
-environment = os.getenv('FLASK_ENV', 'development')
+environment = os.getenv('FLASK_ENV')
 app = create_app(environment)
 
 
