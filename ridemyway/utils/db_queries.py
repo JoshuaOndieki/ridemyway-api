@@ -6,10 +6,7 @@ from flask import current_app as app
 
 
 def sql_signup(user):
-    sql = """INSERT INTO
-                appuser  (username, name, gender, usertype, date_joined,
-                contacts, email, password)
-                VALUES (%s, %s, %s, %s, %s, %d, %s, %s)"""
+    sql = "INSERT INTO appuser  (username, name, gender, usertype, date_joined, contacts, email, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     data = (
             user.username,
             user.name,
@@ -20,12 +17,11 @@ def sql_signup(user):
             user.email,
             user.password)
     cur = app.conn.cursor()
-    try:
-        cur.execute(sql, data)
-        app.conn.commit()
-        return True
-    except Exception:
-        app.conn.rollback
+    cur.execute(sql, data)
+    app.conn.commit()
+    return True
+    print('Roll back, user not added')
+    app.conn.rollback
 
 
 def get_user(username=None, email=None):
@@ -33,7 +29,7 @@ def get_user(username=None, email=None):
     search_by_username_email_sql = """
     SELECT * FROM appuser WHERE username=%s OR email=%s;
     """
-    cur.execute(search_by_username_email_sql, (username, email,))
+    cur.execute(search_by_username_email_sql, (username, email))
     exists = cur.fetchone()
     app.conn.commit()
     cur.close()

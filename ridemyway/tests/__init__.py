@@ -23,4 +23,5 @@ class BaseTest(unittest.TestCase):
         """
             Teardown all test files and instances created
         """
-        self.context.pop()
+        # self.context.pop()
+        pass
