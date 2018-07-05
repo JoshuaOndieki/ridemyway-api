@@ -10,11 +10,13 @@ from flask_jwt_extended import jwt_required, get_raw_jwt
 from flask import current_app as app
 
 from .controllers.auth import AuthController
+from .controllers.user import UserController
 from ridemyway.utils import errors
 from ridemyway.utils.response import Response
 
 
 auth = AuthController()
+user = UserController()
 
 
 class Signup(Resource):
@@ -90,3 +92,13 @@ class Logout(Resource):
         app.blacklist.add(self.jti)
         message = 'Log out successful'
         return Response.success(message=message)
+
+
+class GetUser(Resource):
+    """
+        Used to get a user
+    """
+
+    def get(self, username):
+        self.user_profile = user.fetch_user(username=username)
+        return self.user_profile

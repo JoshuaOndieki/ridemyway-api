@@ -7,14 +7,14 @@ from werkzeug.security import check_password_hash
 from flask_jwt_extended import create_access_token
 
 from ridemyway.utils.response import Response
-from ridemyway.utils.db_queries import sql_signup
+from ridemyway.utils.db_queries import insert_user
 from ridemyway.api.v2.models.user import User
-from ridemyway.utils.db_queries import get_user
+from ridemyway.utils.db_queries import select_user
 
 
 class AuthController():
     """
-        Controls all CRUD operations of the User object.
+        Controls all CRUD operations of the User object about Authentication.
     """
 
     def signup(self, **kwargs):
@@ -24,11 +24,11 @@ class AuthController():
         now = datetime.now()
         kwargs['date_joined'] = now.strftime('%b %d %Y %H:%M%p')
         self.user = User(kwargs)
-        user_exists = get_user(username=self.user.username,
-                               email=self.user.email)
+        user_exists = select_user(username=self.user.username,
+                                  email=self.user.email)
         if user_exists:
             return Response.failed(message='Such user exists'), 409
-        user_added = sql_signup(self.user)
+        user_added = insert_user(self.user)
         message = 'User created successfully'
         attributes = {
             'location': '/api/v2/users/' + self.user.username
@@ -47,7 +47,7 @@ class AuthController():
             username = kwargs['username']
         if 'email' in kwargs:
             email = kwargs['email']
-        self.user = get_user(username=username, email=email)
+        self.user = select_user(username=username, email=email)
         if self.user and check_password_hash(self.user['password'],
                                              kwargs['password']):
             message = 'Login successful'
