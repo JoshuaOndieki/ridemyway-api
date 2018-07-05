@@ -51,6 +51,11 @@ class TestLogin(V2BaseTest):
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
 
+    def test_required_details_are_provided(self):
+        self.response = self.client().post(LOGIN, data={})
+        self.assertEqual(self.response.status_code, 400,
+                         msg='Should return 400 status code for empty data')
+
 
 if __name__ == '__main__':
     unittest.main()
