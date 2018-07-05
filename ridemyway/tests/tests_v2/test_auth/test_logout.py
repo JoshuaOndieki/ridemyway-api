@@ -29,8 +29,8 @@ class TestLogout(V2BaseTest):
                                            headers=dict(
                                                Authorization="Bearer " +
                                                access_token))
-        self.assertEqual(self.response.status_code, 400,
-                         msg='Should return 400 status code for' +
+        self.assertEqual(self.response.status_code, 401,
+                         msg='Should return 401 status code for' +
                          ' use of blacklisted token')
 
 
