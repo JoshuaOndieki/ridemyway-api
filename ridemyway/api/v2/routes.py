@@ -17,3 +17,4 @@ add = api.add_resource
 # Add routes here
 add(r.Signup, '/auth/signup')                                  # POST
 add(r.Login, '/auth/login')                                    # POST
+add(r.Logout, '/auth/logout')                                  # POST

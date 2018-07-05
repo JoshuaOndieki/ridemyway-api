@@ -36,7 +36,6 @@ class Response():
         """
         success_response = {
             'status': 'success',
-            'meta': {},
             'message': '',
             }
         for item in kwargs:
@@ -53,8 +52,7 @@ class Response():
         """
         fail_response = {
             'status': 'failed',
-            'message': '',
-            'meta': {}
+            'message': ''
             }
         for item in kwargs:
             fail_response[item] = kwargs[item]
