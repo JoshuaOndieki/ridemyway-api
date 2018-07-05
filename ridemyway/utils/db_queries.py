@@ -7,7 +7,7 @@ import psycopg2
 import psycopg2.extras
 
 
-def sql_signup(user):
+def insert_user(user):
     sql = "INSERT INTO appuser  (username, name, gender, usertype, date_joined, contacts, email, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     data = (
             user.username,
@@ -27,8 +27,8 @@ def sql_signup(user):
         app.conn.rollback()
 
 
-def get_user(username=None, email=None):
-    cur = app.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+def select_user(username=None, email=None):
+    cur = app.conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     search_by_username_email_sql = """
     SELECT * FROM appuser WHERE username=%s OR email=%s;
     """
@@ -38,3 +38,7 @@ def get_user(username=None, email=None):
     cur.close()
     if user:
         return user
+
+
+def update_user(user_details):
+    pass

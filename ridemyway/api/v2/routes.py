@@ -18,3 +18,4 @@ add = api.add_resource
 add(r.Signup, '/auth/signup')                                  # POST
 add(r.Login, '/auth/login')                                    # POST
 add(r.Logout, '/auth/logout')                                  # POST
+add(r.GetUser, '/users/<username>')                            # GET
