@@ -14,6 +14,9 @@ class Config:
     Application configuration base class
     """
     SECRET_KEY = 'secret'
+    JWT_SECRET_KEY = 'super-secret'
+    JWT_BLACKLIST_ENABLED = True
+    JWT_BLACKLIST_TOKEN_CHECKS = ['access', 'refresh']
     BUNDLE_ERRORS = True
     WTF_CSRF_ENABLED = False
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))

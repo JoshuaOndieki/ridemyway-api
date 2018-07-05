@@ -4,6 +4,7 @@
 
 from flask import current_app as app
 import psycopg2
+import psycopg2.extras
 
 
 def sql_signup(user):
@@ -24,18 +25,16 @@ def sql_signup(user):
         return True
     except psycopg2.Error:
         app.conn.rollback()
-        return 0
 
 
 def get_user(username=None, email=None):
-    cur = app.conn.cursor()
+    cur = app.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     search_by_username_email_sql = """
     SELECT * FROM appuser WHERE username=%s OR email=%s;
     """
     cur.execute(search_by_username_email_sql, (username, email))
-    exists = cur.fetchone()
+    user = cur.fetchone()
     app.conn.commit()
     cur.close()
-
-    if exists:
-        return True
+    if user:
+        return user

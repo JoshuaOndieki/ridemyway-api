@@ -49,8 +49,28 @@ class Signup(Resource):
         """
             User SIGNUP
         """
-        data = self.parser.parse_args()
-        signup_errors = errors.signup_errors(**data)
+        self.data = self.parser.parse_args()
+        signup_errors = errors.signup_errors(**self.data)
         if signup_errors:
             return json.loads(json.dumps(signup_errors)), 422
-        return auth.signup(**data)
+        return auth.signup(**self.data)
+
+
+class Login(Resource):
+    """
+        Login Resource
+    """
+    def __init__(self):
+        self.parser = reqparse.RequestParser()
+        self.parser.add_argument('password',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('username')
+        self.parser.add_argument('email')
+
+    def post(self):
+        self.data = self.parser.parse_args()
+        login_errors = errors.login_errors(**self.data)
+        if login_errors:
+            return json.loads(json.dumps(login_errors)), 422
+        return auth.login(**self.data)

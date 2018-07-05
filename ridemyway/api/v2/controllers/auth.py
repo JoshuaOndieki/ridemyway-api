@@ -3,6 +3,8 @@
 """
 
 from datetime import datetime
+from werkzeug.security import check_password_hash
+from flask_jwt_extended import create_access_token
 
 from ridemyway.utils.response import Response
 from ridemyway.utils.db_queries import sql_signup
@@ -34,3 +36,25 @@ class AuthController():
         if user_added:
             return Response.success(message=message, attributes=attributes), 201
         return Response.failed(message='failed to add user'), 400
+
+    def login(self, **kwargs):
+        """
+            Controls the login process
+        """
+        username = None
+        email = None
+        if 'username' in kwargs:
+            username = kwargs['username']
+        if 'email' in kwargs:
+            email = kwargs['email']
+        self.user = get_user(username=username, email=email)
+        if self.user and check_password_hash(self.user['password'],
+                                             kwargs['password']):
+            message = 'Login successful'
+            access_token = create_access_token(identity=self.user['username'])
+            response = Response.success(message=message,
+                                        access_token=access_token)
+            return response, 200
+        message = 'Login unsuccessful'
+        info = 'Invalid username or password'
+        return Response.failed(message=message, info=info), 401

@@ -56,3 +56,15 @@ def signup_errors(**kwargs):
     meta = {'errors': len(errors)}
     if errors:
         return Response.failed(meta=meta, message=message, errors=errors)
+
+
+def login_errors(**kwargs):
+    message = 'Login unsuccessful'
+    errors = {}
+    if 'username' not in kwargs and 'email' not in kwargs:
+        errors['identity'] = 'Provide either an email or username to login'
+    if 'password' not in kwargs:
+        errors['password'] = 'This field cannot be blank'
+    meta = {'errors': len(errors)}
+    if errors:
+        return Response.failed(meta=meta, message=message, errors=errors)
