@@ -4,9 +4,7 @@
     for semantic error checks
     Clean data without semantic errors is further handled by the controllers
 """
-from flask import current_app as app
 import json
-
 from flask_restful import Resource, reqparse
 
 from .controllers.auth import AuthController
