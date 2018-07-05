@@ -1,6 +1,7 @@
 """
     User model
 """
+from werkzeug.security import generate_password_hash
 
 
 class User():
@@ -26,4 +27,7 @@ class User():
         self.date_joined = kwargs['date_joined']
         self.contacts = int(kwargs['contacts'])
         self.email = kwargs['email']
-        self.password = kwargs['password']
+        self.set_password(kwargs['password'])
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
