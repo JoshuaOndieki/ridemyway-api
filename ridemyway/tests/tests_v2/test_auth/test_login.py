@@ -26,14 +26,6 @@ class TestLogin(V2BaseTest):
         self.assertTrue(result['access_token'] is not False,
                         msg='Should return access token')
 
-    def test_anonymous_login_not_possible(self):
-        self.response = self.client().post(LOGIN, data={})
-        self.assertEqual(self.response.status_code, 400,
-                         msg='Should return 400 status code for empty data')
-        result = json.loads(self.response.data.decode())
-        self.assertTrue(result['status'] == 'failed',
-                        msg='Should return status failed in response data')
-
     def test_non_user_cannot_login(self):
         NON_USER = {
             'username': 'null',
