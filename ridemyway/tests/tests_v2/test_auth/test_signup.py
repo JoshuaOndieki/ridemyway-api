@@ -23,7 +23,6 @@ class TestSignUp(V2BaseTest):
     """
 
     def test_driver_can_signup_successfully(self):
-        print(VALID_DRIVER)
         self.response = self.client().post(SIGNUP, data=VALID_DRIVER)
         self.assertEqual(self.response.status_code, 201,
                          msg='Should return 201 status code' +
