@@ -6,9 +6,12 @@
 """
 import json
 from flask_restful import Resource, reqparse
+from flask_jwt_extended import jwt_required, get_raw_jwt
+from flask import current_app as app
 
 from .controllers.auth import AuthController
 from ridemyway.utils import errors
+from ridemyway.utils.response import Response
 
 
 auth = AuthController()
@@ -72,3 +75,18 @@ class Login(Resource):
         if login_errors:
             return json.loads(json.dumps(login_errors)), 422
         return auth.login(**self.data)
+
+
+class Logout(Resource):
+    """
+        Logs out a user and revokes the token
+    """
+    @jwt_required
+    def post(self):
+        """
+            Revokes a token and blacklists it.
+        """
+        self.jti = get_raw_jwt()['jti']
+        app.blacklist.add(self.jti)
+        message = 'Log out successful'
+        return Response.success(message=message)
