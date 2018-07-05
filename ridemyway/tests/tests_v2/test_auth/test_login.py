@@ -21,14 +21,15 @@ class TestLogin(V2BaseTest):
         self.signup()
         self.response = self.client().post(LOGIN, data=VALID_DRIVER)
         self.assertEqual(self.response.status_code, 200,
-                        msg='Should return 200 status code for successful login')
-        self.assertTrue(self.response.access_token is not False,
+                         msg='Should return 200 status code for successful login')
+        result = json.loads(self.response.data.decode())
+        self.assertTrue(result['access_token'] is not False,
                         msg='Should return access token')
 
     def test_anonymous_login_not_possible(self):
         self.response = self.client().post(LOGIN, data={})
         self.assertEqual(self.response.status_code, 400,
-                        msg='Should return 400 status code for empty data')
+                         msg='Should return 400 status code for empty data')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -40,7 +41,7 @@ class TestLogin(V2BaseTest):
         }
         self.response = self.client().post(LOGIN, data=NON_USER)
         self.assertEqual(self.response.status_code, 401,
-                        msg='Should return 401 status code for non users')
+                         msg='Should return 401 status code for non users')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
@@ -53,7 +54,7 @@ class TestLogin(V2BaseTest):
         }
         self.response = self.client().post(LOGIN, data=FAKE_PASSWORD)
         self.assertEqual(self.response.status_code, 401,
-                        msg='Should return 401 status code for fake users')
+                         msg='Should return 401 status code for fake users')
         result = json.loads(self.response.data.decode())
         self.assertTrue(result['status'] == 'failed',
                         msg='Should return status failed in response data')
