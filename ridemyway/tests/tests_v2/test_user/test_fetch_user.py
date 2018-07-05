@@ -16,7 +16,8 @@ class TestFetchUser(V2BaseTest):
 
     def test_fetch_user_successfully(self):
         self.client().post(SIGNUP, data=VALID_DRIVER)
-        self.response = self.client().get(USER + '/1')
+        self.response = self.client().get(USER + '/' +
+                                          VALID_DRIVER['username'])
         self.assertEqual(self.response.status_code, 200,
                          msg='Should return 200 status code for get user')
 
