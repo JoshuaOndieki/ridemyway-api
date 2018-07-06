@@ -18,10 +18,10 @@ class TestEditUser(V2BaseTest):
     def test_user_can_edit_successfully(self):
         self.client().post(SIGNUP, data=VALID_DRIVER)
         self.response = self.client().post(LOGIN, data=VALID_DRIVER)
-        access_token = self.response.access_token
+        access_token = json.loads(self.response.data.decode())['access_token']
         # Edit user
         EDITS = {
-            'name': 'New Name',
+            'name': 'New Name'
         }
         self.response = self.client().put(USER,
                                           data=EDITS,
@@ -34,10 +34,10 @@ class TestEditUser(V2BaseTest):
     def test_cannot_edit_username(self):
         self.client().post(SIGNUP, data=VALID_DRIVER)
         self.response = self.client().post(LOGIN, data=VALID_DRIVER)
-        access_token = self.response.access_token
+        access_token = json.loads(self.response.data.decode())['access_token']
         # Edit user
         EDITS = {
-            'username': 'newer',
+            'username': 'newer'
         }
         self.response = self.client().put(USER,
                                           data=EDITS,
@@ -51,16 +51,16 @@ class TestEditUser(V2BaseTest):
     def test_cannot_edit_usertype(self):
         self.client().post(SIGNUP, data=VALID_DRIVER)
         self.response = self.client().post(LOGIN, data=VALID_DRIVER)
-        access_token = self.response.access_token
+        access_token = json.loads(self.response.data.decode())['access_token']
         # Edit user
         EDITS = {
-            'usertype': 'rider',
+            'usertype': 'rider'
         }
         self.response = self.client().put(USER,
-                                           data=EDITS,
-                                           headers=dict(
-                                               Authorization="Bearer " +
-                                               access_token))
+                                          data=EDITS,
+                                          headers=dict(
+                                              Authorization="Bearer " +
+                                              access_token))
         result = json.loads(self.response.data.decode())
         self.assertIn('usertype', result['warnings'],
                       msg='Should not allow edits of usertype')
@@ -68,16 +68,16 @@ class TestEditUser(V2BaseTest):
     def test_cannot_edit_date_joined(self):
         self.client().post(SIGNUP, data=VALID_DRIVER)
         self.response = self.client().post(LOGIN, data=VALID_DRIVER)
-        access_token = self.response.access_token
+        access_token = json.loads(self.response.data.decode())['access_token']
         # Edit user
         EDITS = {
-            'date_joined': '31/12/1901 12:00AM',
+            'date_joined': '31/12/1901 12:00AM'
         }
         self.response = self.client().put(USER,
-                                           data=EDITS,
-                                           headers=dict(
-                                               Authorization="Bearer " +
-                                               access_token))
+                                          data=EDITS,
+                                          headers=dict(
+                                              Authorization="Bearer " +
+                                              access_token))
         result = json.loads(self.response.data.decode())
         self.assertIn('date_joined', result['warnings'],
                       msg='Should not allow edits of date joined')
