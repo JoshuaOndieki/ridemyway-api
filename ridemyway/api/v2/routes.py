@@ -20,3 +20,4 @@ add(r.Login, '/auth/login')                                    # POST
 add(r.Logout, '/auth/logout')                                  # POST
 add(r.GetUser, '/users/<username>')                            # GET
 add(r.EditUser, '/users')                                      # PUT
+add(r.Vehicle, '/vehicle')                                     # POST

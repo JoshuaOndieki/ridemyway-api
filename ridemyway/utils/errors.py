@@ -84,3 +84,15 @@ def edit_errors(**kwargs):
     meta = {'errors': len(errors)}
     if errors:
         return Response.failed(meta=meta, message=message, errors=errors)
+
+
+def vehicle_errors(**kwargs):
+    message = 'Could not add vehicle'
+    errors = {}
+    if not is_int(kwargs['capacity']):
+        errors['capacity'] = 'Capacity is in invalid format'
+    if is_number(kwargs['number_plate']):
+        errors['number_plate'] = 'Invalid vehicle number plate |Expects string'
+    meta = {'errors': len(errors)}
+    if errors:
+        return Response.failed(meta=meta, message=message, errors=errors)

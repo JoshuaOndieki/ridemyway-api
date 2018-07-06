@@ -55,3 +55,34 @@ def update_user(**kwargs):
         return True
     except psycopg2.Error:
         return False
+
+
+def select_vehicle(number_plate=None):
+    sql = """
+    SELECT * FROM uservehicle WHERE number_plate=%s;
+    """
+    cur = app.conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    try:
+        cur.execute(sql, (number_plate,))
+        vehicle = cur.fetchone()
+        app.conn.commit()
+        cur.close()
+        return vehicle
+    except psycopg2.Error:
+        return False
+
+
+def insert_vehicle(**kwargs):
+    sql = "INSERT INTO uservehicle (number_plate, driver, vehicle_type, color, capacity) VALUES (%s, %s, %s, %s, %s)"
+    data = (kwargs['number_plate'],
+            kwargs['driver'],
+            kwargs['vehicle_type'],
+            kwargs['color'],
+            kwargs['capacity'])
+    cur = app.conn.cursor()
+    try:
+        cur.execute(sql, data)
+        app.conn.commit()
+        return True
+    except psycopg2.Error:
+        app.conn.rollback()

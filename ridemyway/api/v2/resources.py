@@ -11,12 +11,14 @@ from flask import current_app as app
 
 from .controllers.auth import AuthController
 from .controllers.user import UserController
+from .controllers.vehicle import VehicleController
 from ridemyway.utils import errors
 from ridemyway.utils.response import Response
 
 
 auth = AuthController()
 user = UserController()
+a_vehicle = VehicleController()
 
 
 class Signup(Resource):
@@ -130,3 +132,32 @@ class EditUser(Resource):
         if self.errors:
             return errors, 422
         return user.edit_user(**self.data)
+
+
+class Vehicle(Resource):
+    """
+        Resource for adding a vehicle
+    """
+
+    def __init__(self):
+        self.parser = reqparse.RequestParser()
+        self.parser.add_argument('number_plate',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('vehicle_type',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('color',
+                                 help='This field cannot be blank',
+                                 required=True)
+        self.parser.add_argument('capacity',
+                                 help='This field cannot be blank',
+                                 required=True)
+
+    @jwt_required
+    def post(self):
+        self.data = self.parser.parse_args()
+        vehicle_errors = errors.vehicle_errors(**self.data)
+        if vehicle_errors:
+            return vehicle_errors, 422
+        return a_vehicle.register(**self.data)
