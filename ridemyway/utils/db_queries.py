@@ -40,5 +40,5 @@ def select_user(username=None, email=None):
         return user
 
 
-def update_user(user_details):
+def update_user(**kwargs):
     pass

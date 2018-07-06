@@ -68,3 +68,19 @@ def login_errors(**kwargs):
     meta = {'errors': len(errors)}
     if errors:
         return Response.failed(meta=meta, message=message, errors=errors)
+
+
+def edit_errors(**kwargs):
+    message = 'Could not add user'
+    errors = {}
+    if 'name' in kwargs and not is_name(kwargs['name']):
+        errors['name'] = 'Name should only have alphabets and spaces.'
+    if 'email' in kwargs and not is_email(kwargs['email']):
+        errors['email'] = 'Invalid email provided'
+    if 'contacts' in kwargs and not is_int(kwargs['contacts']):
+        errors['contacts'] = 'Contacts should be a number'
+    if 'gender' in kwargs and not is_gender(kwargs['gender']):
+        errors['gender'] = 'Invalid gender provided'
+    meta = {'errors': len(errors)}
+    if errors:
+        return Response.failed(meta=meta, message=message, errors=errors)

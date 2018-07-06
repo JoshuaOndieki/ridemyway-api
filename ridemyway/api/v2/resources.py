@@ -102,3 +102,31 @@ class GetUser(Resource):
     def get(self, username):
         self.user_profile = user.fetch_user(username=username)
         return self.user_profile
+
+
+class EditUser(Resource):
+    """
+        Resource for editting a user
+    """
+    def __init__(self):
+        self.parser = reqparse.RequestParser()
+        self.parser.add_argument('username')
+        self.parser.add_argument('name')
+        self.parser.add_argument('gender')
+        self.parser.add_argument('usertype')
+        self.parser.add_argument('email')
+        self.parser.add_argument('password')
+        self.parser.add_argument('contacts')
+        self.parser.add_argument('date_joined')
+
+    @jwt_required
+    def put(self):
+        self.data = self.parser.parse_args()
+        # Get rid of None fields. I.e. fields that were not provided by user
+        self.data = {field: value for field,
+                     value in self.data.items()
+                     if value}
+        self.errors = errors.edit_errors(**self.data)
+        if self.errors:
+            return errors, 422
+        return user.edit_user(**self.data)
