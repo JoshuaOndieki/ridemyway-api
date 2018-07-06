@@ -52,6 +52,16 @@ def create_app(config_name):
     app.jwt = JWTManager(app)
     app.blacklist = set()
 
+    @app.jwt.token_in_blacklist_loader
+    def check_if_token_in_blacklist(decrypted_token):
+        """
+            Checks whether the identity of the token is blacklisted
+            Returns:
+                True if it's blacklisted, false otherwise
+        """
+        jti = decrypted_token['jti']  # JWT ID
+        return jti in app.blacklist
+
     @app.route('/')
     def api_docs():
         """ Route to the api docs"""

@@ -7,6 +7,7 @@ ROOT_URL = '/api/v2'
 
 SIGNUP = ROOT_URL + '/auth/signup'
 LOGIN = ROOT_URL + '/auth/login'
+LOGOUT = ROOT_URL + '/auth/logout'
 
 USER = ROOT_URL + '/users'
 
