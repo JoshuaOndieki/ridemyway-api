@@ -41,4 +41,17 @@ def select_user(username=None, email=None):
 
 
 def update_user(**kwargs):
-    pass
+    sql = """UPDATE appuser
+    SET name=%s, gender=%s, contacts=%s, email=%s, password=%s
+    WHERE username=%s
+    """
+    cur = app.conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    try:
+        cur.execute(sql, (kwargs['name'], kwargs['gender'], kwargs['contacts'],
+                          kwargs['email'], kwargs['password'],
+                          kwargs['username']))
+        app.conn.commit()
+        cur.close()
+        return True
+    except psycopg2.Error:
+        return False

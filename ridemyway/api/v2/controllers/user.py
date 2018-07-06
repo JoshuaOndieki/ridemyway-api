@@ -6,6 +6,7 @@ from flask_jwt_extended import get_jwt_identity
 from ridemyway.utils.response import Response
 from ridemyway.utils.db_queries import select_user, update_user
 from ridemyway.utils.warnings import edit_warnings
+from flask_restful import abort
 
 
 class UserController():
@@ -35,19 +36,24 @@ class UserController():
         user = select_user(username=username)
         if 'email' in kwargs:
             user_exists = select_user(email=kwargs['email'])
-            if user_exists and user_exists['username'] is not user['username']:
+            print(user_exists['username'])
+            print(username)
+            if user_exists and user_exists['username'] != username:
                 message = 'Email already in use by another user'
                 response = Response.failed(message=message)
                 return response, 403
         for field in kwargs:
             if field not in immutable_fields:
                 user[field] = kwargs[field]
-        update_user(**user)
-        message = 'Edit user successful'
-        if self.warnings:
-            message = self.warnings[2]
-            meta = self.warnings[1]
-            warnings = self.warnings[0]
-            return Response.success(message=message, meta=meta,
-                                    warnings=warnings), 201
-        return Response.success(message=message), 201
+        user_updated = update_user(**user)
+        if user_updated:
+            message = 'Edit user successful'
+            if self.warnings:
+                message = self.warnings[2]
+                meta = self.warnings[1]
+                warnings = self.warnings[0]
+                return Response.success(message=message, meta=meta,
+                                        warnings=warnings), 201
+            return Response.success(message=message), 201
+        # If nothing works, it's probably a server error, abort
+        abort(500)
