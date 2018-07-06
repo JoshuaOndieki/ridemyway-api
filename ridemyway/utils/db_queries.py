@@ -38,7 +38,3 @@ def select_user(username=None, email=None):
     cur.close()
     if user:
         return user
-
-
-def update_user(user_details):
-    pass
