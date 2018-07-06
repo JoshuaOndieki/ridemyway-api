@@ -14,17 +14,17 @@ class UserController():
     """
 
     def fetch_user(self, username):
-        user = select_user(username)
-        if user:
+        self.user = select_user(username)
+        if self.user:
             message = 'User fetched successfully'
             attributes = {
-                'location': '/api/v2/users/' + user['username']
+                'location': '/api/v2/users/' + self.user['username']
             }
             # MAKE SURE THE PASSWORD IS POPPED BEFORE RETURNING THE USER!!!
-            del user['password']
+            del self.user['password']
             # Now :) it's safe to return the other details
             return Response.success(message=message, attributes=attributes,
-                                    data=user), 200
+                                    data=self.user), 200
         message = 'No such user'
         return Response.failed(message=message), 404
 
