@@ -2,11 +2,11 @@
     Controller for endpoints on user
 """
 from flask_jwt_extended import get_jwt_identity
+from flask_restful import abort
 
-from ridemyway.utils.response import Response
 from ridemyway.utils.db_queries import select_user, update_user
 from ridemyway.utils.warnings import edit_warnings
-from flask_restful import abort
+from ridemyway.utils.response import Response
 
 
 class UserController():
