@@ -155,7 +155,7 @@ GREATER_RIDE_CAPACITY = {
 VALID_VEHICLE = {
     'model': 'Model1',
     'number_plate': 'KDF-A12',
-    'type': 'TypeA',
+    'vehicle_type': 'TypeA',
     'color': 'Color Y',
     'capacity': 4
 }
@@ -163,7 +163,7 @@ VALID_VEHICLE = {
 INVALID_VEHICLE_CAPACITY = {
     'model': 'Model1',
     'number_plate': 'KDF-A12',
-    'type': 'TypeA',
+    'vehicle_type': 'TypeA',
     'color': 'Color Y',
     'capacity': 4.1
 }
